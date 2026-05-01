@@ -1,0 +1,7 @@
+[2026-04-30T17:03:59.069006] POST
+Details: {
+  "success": false,
+  "platform": "instagram",
+  "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text(\\\"Select from computer\\\")\").first\n",
+  "timestamp": "2026-04-30T17:03:59.050773"
+}

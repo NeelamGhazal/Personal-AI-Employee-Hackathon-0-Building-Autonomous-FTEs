@@ -1,0 +1,17 @@
+{
+  "name": "mcp_servers",
+  "version": "1.0.0",
+  "description": "MCP servers for AI Employee",
+  "type": "module",
+  "main": "vault_mcp_server.js",
+  "scripts": {
+    "start": "node vault_mcp_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  }
+}

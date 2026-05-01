@@ -1,0 +1,272 @@
+[2026-04-24 21:00:01] Starting AI Employee scheduled run
+[2026-04-24 21:00:01] Running reasoning loop...
+2026-04-24 21:00:04,889 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:00:04] Running approval orchestrator...
+[2026-04-24 21:00:07] AI Employee scheduled run complete
+---
+[2026-04-24 21:05:01] Starting AI Employee scheduled run
+[2026-04-24 21:05:01] Running reasoning loop...
+2026-04-24 21:05:02,339 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:05:02] Running approval orchestrator...
+[2026-04-24 21:05:03] AI Employee scheduled run complete
+---
+[2026-04-24 21:10:01] Starting AI Employee scheduled run
+[2026-04-24 21:10:01] Running reasoning loop...
+2026-04-24 21:10:02,239 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:10:02] Running approval orchestrator...
+[2026-04-24 21:10:02] AI Employee scheduled run complete
+---
+[2026-04-24 21:15:01] Starting AI Employee scheduled run
+[2026-04-24 21:15:01] Running reasoning loop...
+2026-04-24 21:15:02,740 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:15:02] Running approval orchestrator...
+[2026-04-24 21:15:03] AI Employee scheduled run complete
+---
+[2026-04-24 21:20:01] Starting AI Employee scheduled run
+[2026-04-24 21:20:01] Running reasoning loop...
+2026-04-24 21:20:02,530 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:20:02] Running approval orchestrator...
+[2026-04-24 21:20:03] AI Employee scheduled run complete
+---
+[2026-04-24 21:25:01] Starting AI Employee scheduled run
+[2026-04-24 21:25:01] Running reasoning loop...
+2026-04-24 21:25:03,111 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:25:03] Running approval orchestrator...
+[2026-04-24 21:25:04] AI Employee scheduled run complete
+---
+[2026-04-24 21:30:01] Starting AI Employee scheduled run
+[2026-04-24 21:30:01] Running reasoning loop...
+2026-04-24 21:30:02,276 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:30:02] Running approval orchestrator...
+[2026-04-24 21:30:03] AI Employee scheduled run complete
+---
+[2026-04-24 21:35:01] Starting AI Employee scheduled run
+[2026-04-24 21:35:01] Running reasoning loop...
+2026-04-24 21:35:02,657 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:35:02] Running approval orchestrator...
+[2026-04-24 21:35:03] AI Employee scheduled run complete
+---
+[2026-04-24 21:40:01] Starting AI Employee scheduled run
+[2026-04-24 21:40:01] Running reasoning loop...
+2026-04-24 21:40:03,309 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:40:03] Running approval orchestrator...
+[2026-04-24 21:40:04] AI Employee scheduled run complete
+---
+[2026-04-24 21:45:01] Starting AI Employee scheduled run
+[2026-04-24 21:45:01] Running reasoning loop...
+2026-04-24 21:45:03,604 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:45:03] Running approval orchestrator...
+[2026-04-24 21:45:05] AI Employee scheduled run complete
+---
+[2026-04-24 21:50:01] Starting AI Employee scheduled run
+[2026-04-24 21:50:01] Running reasoning loop...
+2026-04-24 21:50:03,473 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:50:03] Running approval orchestrator...
+[2026-04-24 21:50:04] AI Employee scheduled run complete
+---
+[2026-04-24 21:55:02] Starting AI Employee scheduled run
+[2026-04-24 21:55:02] Running reasoning loop...
+2026-04-24 21:55:03,920 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 21:55:03] Running approval orchestrator...
+[2026-04-24 21:55:05] AI Employee scheduled run complete
+---
+[2026-04-24 22:00:01] Starting AI Employee scheduled run
+[2026-04-24 22:00:01] Running reasoning loop...
+2026-04-24 22:00:03,298 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:00:03] Running approval orchestrator...
+[2026-04-24 22:00:04] AI Employee scheduled run complete
+---
+[2026-04-24 22:05:01] Starting AI Employee scheduled run
+[2026-04-24 22:05:01] Running reasoning loop...
+2026-04-24 22:05:02,512 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:05:02] Running approval orchestrator...
+[2026-04-24 22:05:03] AI Employee scheduled run complete
+---
+[2026-04-24 22:10:01] Starting AI Employee scheduled run
+[2026-04-24 22:10:01] Running reasoning loop...
+2026-04-24 22:10:03,532 - ReasoningLoop - INFO - Processing: FILE_20260424_220913_task1.md
+2026-04-24 22:10:03,550 - ReasoningLoop - INFO - Created plan: PLAN_20260424_221003_FILE_20260424_220913_task1.md
+2026-04-24 22:10:03,576 - ReasoningLoop - INFO - Processed 1 item(s)
+[2026-04-24 22:10:03] Running approval orchestrator...
+[2026-04-24 22:10:04] AI Employee scheduled run complete
+---
+[2026-04-24 22:15:01] Starting AI Employee scheduled run
+[2026-04-24 22:15:01] Running reasoning loop...
+2026-04-24 22:15:02,876 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:15:02] Running approval orchestrator...
+2026-04-24 22:15:03,729 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260422_024329_FILE_20260422_014343_urgent_in.md
+2026-04-24 22:15:03,740 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:03,741 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: FILE_20260422_014343_urgent_invoice_request.md
+2026-04-24 22:15:03,741 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:03,766 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260422_024329_FILE_20260422_014343_urgent_in.md to Done
+2026-04-24 22:15:03,804 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:03,805 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260422_235503_EMAIL_20260422_235321_Hi_Shana.md
+2026-04-24 22:15:03,811 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:03,812 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: EMAIL_20260422_235321_Hi_Shanaya_welcome_to_Google_A.md
+2026-04-24 22:15:03,812 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:03,831 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260422_235503_EMAIL_20260422_235321_Hi_Shana.md to Done
+2026-04-24 22:15:03,841 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:03,842 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260422_235503_EMAIL_20260422_235321_Security.md
+2026-04-24 22:15:03,847 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:03,848 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: EMAIL_20260422_235321_Security_alert.md
+2026-04-24 22:15:03,848 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:03,870 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260422_235503_EMAIL_20260422_235321_Security.md to Done
+2026-04-24 22:15:03,881 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:03,881 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260423_000003_EMAIL_20260422_235623_Hello.md
+2026-04-24 22:15:03,887 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:03,888 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: EMAIL_20260422_235623_Hello.md
+2026-04-24 22:15:03,888 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:03,907 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260423_000003_EMAIL_20260422_235623_Hello.md to Done
+2026-04-24 22:15:03,917 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:03,918 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260423_000003_EMAIL_20260422_235726_Hello.md
+2026-04-24 22:15:03,932 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:03,932 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: EMAIL_20260422_235726_Hello.md
+2026-04-24 22:15:03,933 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:03,952 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260423_000003_EMAIL_20260422_235726_Hello.md to Done
+2026-04-24 22:15:03,977 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:03,977 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260424_210610_EMAIL_20260424_210610_Ask_anyt.md
+2026-04-24 22:15:03,982 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:03,983 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: EMAIL_20260424_210610_Ask_anything__really.md
+2026-04-24 22:15:03,984 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:04,030 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260424_210610_EMAIL_20260424_210610_Ask_anyt.md to Done
+2026-04-24 22:15:04,052 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:04,053 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260424_212242_FILE_20260424_212222_client_in.md
+2026-04-24 22:15:04,058 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:04,059 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: FILE_20260424_212222_client_invoice_request.md
+2026-04-24 22:15:04,059 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:04,073 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260424_212242_FILE_20260424_212222_client_in.md to Done
+2026-04-24 22:15:04,081 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:04,081 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260424_220046_FILE_20260424_220040_invoice_a.md
+2026-04-24 22:15:04,086 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:04,086 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: FILE_20260424_220040_invoice_april_abc.md
+2026-04-24 22:15:04,087 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:04,099 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260424_220046_FILE_20260424_220040_invoice_a.md to Done
+2026-04-24 22:15:04,108 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:04,108 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_20260424_220246_EMAIL_20260424_220224_Gmail_wa.md
+2026-04-24 22:15:04,113 - ApprovalOrchestrator - INFO - [DRY RUN] Would send email to: unknown
+2026-04-24 22:15:04,113 - ApprovalOrchestrator - INFO - [DRY RUN] Subject: Re: EMAIL_20260424_220224_Gmail_watcher.md
+2026-04-24 22:15:04,114 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Email would be sent to unknown
+2026-04-24 22:15:04,125 - ApprovalOrchestrator - INFO - Moved APPROVAL_20260424_220246_EMAIL_20260424_220224_Gmail_wa.md to Done
+2026-04-24 22:15:04,134 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:04,134 - ApprovalOrchestrator - INFO - Processing approval: APPROVAL_invoice_ABC_Corp.md
+2026-04-24 22:15:04,138 - ApprovalOrchestrator - INFO - [DRY RUN] Would send invoice to: billing@abccorp.example.com
+2026-04-24 22:15:04,138 - ApprovalOrchestrator - INFO - [DRY RUN] Amount: $2500.00
+2026-04-24 22:15:04,139 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Invoice for $2500.00 would be sent to billing@abccorp.example.com
+2026-04-24 22:15:04,149 - ApprovalOrchestrator - INFO - Moved APPROVAL_invoice_ABC_Corp.md to Done
+2026-04-24 22:15:04,156 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:04,157 - ApprovalOrchestrator - INFO - Processing approval: test.md
+2026-04-24 22:15:04,161 - ApprovalOrchestrator - INFO - Action completed: DRY RUN: Generic action "unknown" would be executed
+2026-04-24 22:15:04,179 - ApprovalOrchestrator - INFO - Moved test.md to Done
+2026-04-24 22:15:04,186 - ApprovalOrchestrator - INFO - Updated dashboard with approval action
+2026-04-24 22:15:04,190 - ApprovalOrchestrator - INFO - Processed 11 approval(s)
+[2026-04-24 22:15:04] AI Employee scheduled run complete
+---
+[2026-04-24 22:20:01] Starting AI Employee scheduled run
+[2026-04-24 22:20:01] Running reasoning loop...
+2026-04-24 22:20:02,490 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:20:02] Running approval orchestrator...
+[2026-04-24 22:20:03] AI Employee scheduled run complete
+---
+[2026-04-24 22:25:01] Starting AI Employee scheduled run
+[2026-04-24 22:25:01] Running reasoning loop...
+2026-04-24 22:25:02,207 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:25:02] Running approval orchestrator...
+[2026-04-24 22:25:03] AI Employee scheduled run complete
+---
+[2026-04-24 22:30:01] Starting AI Employee scheduled run
+[2026-04-24 22:30:01] Running reasoning loop...
+2026-04-24 22:30:02,620 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:30:02] Running approval orchestrator...
+[2026-04-24 22:30:03] AI Employee scheduled run complete
+---
+[2026-04-24 22:35:02] Starting AI Employee scheduled run
+[2026-04-24 22:35:02] Running reasoning loop...
+2026-04-24 22:35:03,322 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:35:03] Running approval orchestrator...
+[2026-04-24 22:35:05] AI Employee scheduled run complete
+---
+[2026-04-24 22:40:01] Starting AI Employee scheduled run
+[2026-04-24 22:40:01] Running reasoning loop...
+2026-04-24 22:40:03,531 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:40:03] Running approval orchestrator...
+[2026-04-24 22:40:04] AI Employee scheduled run complete
+---
+[2026-04-24 22:45:01] Starting AI Employee scheduled run
+[2026-04-24 22:45:01] Running reasoning loop...
+2026-04-24 22:45:02,478 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:45:02] Running approval orchestrator...
+[2026-04-24 22:45:03] AI Employee scheduled run complete
+---
+[2026-04-24 22:50:01] Starting AI Employee scheduled run
+[2026-04-24 22:50:01] Running reasoning loop...
+2026-04-24 22:50:02,382 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:50:02] Running approval orchestrator...
+[2026-04-24 22:50:03] AI Employee scheduled run complete
+---
+[2026-04-24 22:55:01] Starting AI Employee scheduled run
+[2026-04-24 22:55:01] Running reasoning loop...
+2026-04-24 22:55:03,207 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 22:55:03] Running approval orchestrator...
+[2026-04-24 22:55:04] AI Employee scheduled run complete
+---
+[2026-04-24 23:00:01] Starting AI Employee scheduled run
+[2026-04-24 23:00:01] Running reasoning loop...
+2026-04-24 23:00:02,571 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:00:02] Running approval orchestrator...
+[2026-04-24 23:00:03] AI Employee scheduled run complete
+---
+[2026-04-24 23:05:01] Starting AI Employee scheduled run
+[2026-04-24 23:05:01] Running reasoning loop...
+2026-04-24 23:05:02,289 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:05:02] Running approval orchestrator...
+[2026-04-24 23:05:03] AI Employee scheduled run complete
+---
+[2026-04-24 23:10:01] Starting AI Employee scheduled run
+[2026-04-24 23:10:01] Running reasoning loop...
+2026-04-24 23:10:02,387 - ReasoningLoop - INFO - Processing: EMAIL_20260424_230743_Gmail_watcher.md
+2026-04-24 23:10:02,399 - ReasoningLoop - INFO - Created plan: PLAN_20260424_231002_EMAIL_20260424_230743_Gmail_wa.md
+2026-04-24 23:10:02,404 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260424_231002_EMAIL_20260424_230743_Gmail_wa.md
+2026-04-24 23:10:02,438 - ReasoningLoop - INFO - Processing: FILE_20260424_230620_demo_task.md
+2026-04-24 23:10:02,448 - ReasoningLoop - INFO - Created plan: PLAN_20260424_231002_FILE_20260424_230620_demo_task.md
+2026-04-24 23:10:02,469 - ReasoningLoop - INFO - Processed 2 item(s)
+[2026-04-24 23:10:02] Running approval orchestrator...
+[2026-04-24 23:10:03] AI Employee scheduled run complete
+---
+[2026-04-24 23:15:01] Starting AI Employee scheduled run
+[2026-04-24 23:15:01] Running reasoning loop...
+2026-04-24 23:15:01,621 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:15:01] Running approval orchestrator...
+[2026-04-24 23:15:02] AI Employee scheduled run complete
+---
+[2026-04-24 23:20:01] Starting AI Employee scheduled run
+[2026-04-24 23:20:01] Running reasoning loop...
+2026-04-24 23:20:01,869 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:20:01] Running approval orchestrator...
+[2026-04-24 23:20:02] AI Employee scheduled run complete
+---
+[2026-04-24 23:25:01] Starting AI Employee scheduled run
+[2026-04-24 23:25:01] Running reasoning loop...
+2026-04-24 23:25:02,142 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:25:02] Running approval orchestrator...
+[2026-04-24 23:25:02] AI Employee scheduled run complete
+---
+[2026-04-24 23:30:02] Starting AI Employee scheduled run
+[2026-04-24 23:30:02] Running reasoning loop...
+2026-04-24 23:30:02,915 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:30:02] Running approval orchestrator...
+[2026-04-24 23:30:03] AI Employee scheduled run complete
+---
+[2026-04-24 23:35:01] Starting AI Employee scheduled run
+[2026-04-24 23:35:01] Running reasoning loop...
+2026-04-24 23:35:02,214 - ReasoningLoop - INFO - No new items to process
+[2026-04-24 23:35:02] Running approval orchestrator...
+[2026-04-24 23:35:02] AI Employee scheduled run complete
+---
+[2026-04-24 23:40:01] Starting AI Employee scheduled run
+[2026-04-24 23:40:01] Running reasoning loop...
+2026-04-24 23:40:02,318 - ReasoningLoop - INFO - Processing: WHATSAPP_20260424_233849_Test_Contact.md
+2026-04-24 23:40:02,328 - ReasoningLoop - INFO - Created plan: PLAN_20260424_234002_WHATSAPP_20260424_233849_Test_.md
+2026-04-24 23:40:02,343 - ReasoningLoop - INFO - Processed 1 item(s)
+[2026-04-24 23:40:02] Running approval orchestrator...
+[2026-04-24 23:40:03] AI Employee scheduled run complete
+---

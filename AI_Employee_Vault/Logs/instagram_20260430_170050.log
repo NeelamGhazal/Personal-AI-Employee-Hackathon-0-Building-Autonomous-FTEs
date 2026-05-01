@@ -1,0 +1,7 @@
+[2026-04-30T17:00:50.906645] POST
+Details: {
+  "success": false,
+  "platform": "instagram",
+  "error": "Page.set_input_files: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[accept=\\\"image/jpeg,image/png,image/heic,image/heif,video/mp4,video/quicktime\\\"]\")\n",
+  "timestamp": "2026-04-30T17:00:50.878999"
+}

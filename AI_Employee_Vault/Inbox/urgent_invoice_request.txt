@@ -1,0 +1,11 @@
+From: Client ABC Corporation
+Subject: URGENT - Invoice Request
+
+Hi,
+
+Please send the invoice for February 2026 consulting services.
+Amount: $2,500.00
+
+Best regards,
+John Smith
+billing@abccorp.example.com

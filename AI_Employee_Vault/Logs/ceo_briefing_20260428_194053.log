@@ -1,0 +1,35 @@
+[2026-04-28T19:40:53.852481] CEO Briefing Generated
+Accounting: {
+  "status": "connected",
+  "revenue": 0,
+  "expenses": 0,
+  "receivable": 0,
+  "payable": 0,
+  "invoice_count": 0,
+  "bill_count": 0,
+  "net_position": 0
+}
+Social Media: {
+  "facebook": 2,
+  "instagram": 2,
+  "twitter": 2,
+  "total": 6
+}
+Communications: {
+  "personal": {
+    "emails": 0,
+    "whatsapp": 2
+  },
+  "business": {
+    "emails": 0,
+    "whatsapp": 1
+  },
+  "total": 3
+}
+Tasks: {
+  "pending": 3,
+  "approved": 0,
+  "done": 21,
+  "rejected": 0
+}
+Output: /mnt/e/Full-Time-Equivalent-Hackathon-0/Full-Time-Equivalent-0/AI_Employee_Vault/Briefings/CEO_BRIEFING_20260428_194053.md

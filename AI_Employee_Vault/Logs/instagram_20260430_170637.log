@@ -1,0 +1,7 @@
+[2026-04-30T17:06:37.846347] POST
+Details: {
+  "success": false,
+  "platform": "instagram",
+  "error": "Page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"]\")\n",
+  "timestamp": "2026-04-30T17:06:37.833089"
+}

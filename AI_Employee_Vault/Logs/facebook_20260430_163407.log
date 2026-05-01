@@ -1,0 +1,7 @@
+[2026-04-30T16:34:07.736218] POST
+Details: {
+  "success": false,
+  "platform": "facebook",
+  "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"[aria-label=\\\"What's on your mind?\\\"]\") to be visible\n",
+  "timestamp": "2026-04-30T16:34:07.725216"
+}

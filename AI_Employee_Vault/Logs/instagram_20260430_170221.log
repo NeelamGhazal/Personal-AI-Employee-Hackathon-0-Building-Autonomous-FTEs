@@ -1,0 +1,7 @@
+[2026-04-30T17:02:21.080393] POST
+Details: {
+  "success": false,
+  "platform": "instagram",
+  "error": "Locator.set_input_files: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n",
+  "timestamp": "2026-04-30T17:02:21.061725"
+}

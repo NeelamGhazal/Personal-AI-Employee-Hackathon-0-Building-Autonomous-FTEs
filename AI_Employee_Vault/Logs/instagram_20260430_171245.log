@@ -1,0 +1,7 @@
+[2026-04-30T17:12:45.760809] POST
+Details: {
+  "success": false,
+  "platform": "instagram",
+  "error": "Could not upload image - no file chooser triggered",
+  "timestamp": "2026-04-30T17:12:45.743493"
+}
