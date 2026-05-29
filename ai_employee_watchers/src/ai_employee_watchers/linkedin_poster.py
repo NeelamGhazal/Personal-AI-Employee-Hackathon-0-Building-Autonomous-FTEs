@@ -1,4 +1,5 @@
-# linkedin_poster.py - Automatically post on LinkedIn for business/sales
+# linkedin_poster.py - Posts to LinkedIn using Playwright browser automation
+# Uses the SAME WORKING approach as twitter_poster.py (fixed version)
 import logging
 import sys
 import time
@@ -15,278 +16,392 @@ logging.basicConfig(
 )
 logger = logging.getLogger('LinkedInPoster')
 
-# Dry run mode
-import os
-DRY_RUN = os.getenv('DRY_RUN', 'true').lower() == 'true'
+# Stealth settings
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+STEALTH_SCRIPT = """
+try { Object.defineProperty(navigator, 'webdriver', {get: () => undefined, configurable: true}); } catch(e) {}
+try { Object.defineProperty(navigator, 'languages', {get: () => ['en-US', 'en'], configurable: true}); } catch(e) {}
+try { window.chrome = { runtime: {} }; } catch(e) {}
+"""
 
 
 class LinkedInPoster:
-    """
-    Posts content to LinkedIn for business/sales purposes.
-    Reads draft posts from /Approved/LINKEDIN_POST_*.md files.
-    """
+    """Posts content to LinkedIn using Playwright browser automation"""
 
     def __init__(self, vault_path: str, session_path: str):
         self.vault_path = Path(vault_path)
-        self.approved = self.vault_path / 'Approved'
-        self.done = self.vault_path / 'Done'
-        self.logs = self.vault_path / 'Logs'
-        self.drafts = self.vault_path / 'Drafts'
+        self.social_media_path = self.vault_path / 'Business' / 'Social_Media'
+        self.social_media_path.mkdir(parents=True, exist_ok=True)
 
-        # Ensure directories exist
-        for folder in [self.approved, self.done, self.logs, self.drafts]:
-            folder.mkdir(parents=True, exist_ok=True)
+        self.logs_path = self.vault_path / 'Logs'
+        self.logs_path.mkdir(parents=True, exist_ok=True)
+
+        self.screenshots_path = self.vault_path / 'Business' / 'Social_Media' / 'screenshots'
+        self.screenshots_path.mkdir(parents=True, exist_ok=True)
 
         self.session_path = Path(session_path)
         self.session_path.mkdir(parents=True, exist_ok=True)
 
-    def _log_action(self, action: str, target: str, result: str, details: str = ""):
-        """Log action to audit log"""
-        today = datetime.now().strftime('%Y-%m-%d')
-        log_file = self.logs / f'{today}.json'
+    def wait_for_login(self, page, timeout_seconds: int = 180):
+        """Wait for user to login to LinkedIn"""
+        logger.info('')
+        logger.info('=' * 60)
+        logger.info('WAITING FOR LINKEDIN LOGIN...')
+        logger.info('=' * 60)
 
-        entries = []
-        if log_file.exists():
-            try:
-                with open(log_file) as f:
-                    entries = json.load(f)
-            except Exception:
-                entries = []
+        # Step 1: Wait for page to load
+        logger.info('Step 1: Waiting for page to load (10 seconds)...')
+        time.sleep(10)
 
-        entries.append({
-            'timestamp': datetime.now().isoformat(),
-            'action_type': action,
-            'actor': 'linkedin_poster',
-            'target': target,
-            'result': result,
-            'details': details,
-            'dry_run': DRY_RUN
-        })
-
-        with open(log_file, 'w') as f:
-            json.dump(entries, f, indent=2)
-
-    def _parse_post_file(self, file_path: Path) -> dict:
-        """Parse a LinkedIn post file"""
-        content = file_path.read_text()
-        post_data = {
-            'content': '',
-            'hashtags': [],
-            'image': None
-        }
-
-        # Parse frontmatter
-        if content.startswith('---'):
-            parts = content.split('---', 2)
-            if len(parts) >= 3:
-                fm_text = parts[1].strip()
-                body = parts[2].strip()
-
-                for line in fm_text.split('\n'):
-                    if ':' in line:
-                        key, value = line.split(':', 1)
-                        if key.strip() == 'hashtags':
-                            post_data['hashtags'] = [h.strip() for h in value.split(',')]
-                        elif key.strip() == 'image':
-                            post_data['image'] = value.strip()
-
-                # Extract post content (everything after ## Post Content)
-                if '## Post Content' in body:
-                    post_content = body.split('## Post Content', 1)[1]
-                    # Remove any subsequent sections
-                    if '##' in post_content:
-                        post_content = post_content.split('##')[0]
-                    post_data['content'] = post_content.strip()
-                else:
-                    post_data['content'] = body
-
-        return post_data
-
-    def post_to_linkedin(self, page, post_content: str, hashtags: list = None) -> bool:
-        """Post content to LinkedIn"""
+        # Step 2: Check if already logged in
+        logger.info('Step 2: Checking if already logged in...')
         try:
-            # Navigate to LinkedIn feed
-            page.goto('https://www.linkedin.com/feed/', timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=15000)
+            logged_in = page.query_selector('[data-alias="feed-tab"]') or \
+                        page.query_selector('[data-test-global-nav-link="feed"]') or \
+                        page.query_selector('button[aria-label="Start a post"]') or \
+                        page.query_selector('.feed-identity-module') or \
+                        page.query_selector('.share-box-feed-entry__trigger')
 
-            # Click "Start a post" button
-            start_post = page.query_selector('button[class*="share-box-feed-entry__trigger"]') or \
-                         page.query_selector('[data-testid="share-box"]') or \
-                         page.query_selector('button:has-text("Start a post")')
+            if logged_in:
+                logger.info('')
+                logger.info('=' * 60)
+                logger.info('SUCCESS: Already logged in to LinkedIn!')
+                logger.info('Session was restored from previous login.')
+                logger.info('=' * 60)
+                return True
+        except Exception as e:
+            logger.debug(f'Login check error: {e}')
 
-            if not start_post:
-                logger.error('Could not find "Start a post" button')
-                return False
+        # Step 3: Wait for manual login
+        logger.info('Step 3: Not logged in. Please login manually...')
+        logger.info('')
+        logger.info('=' * 60)
+        logger.info('>>> PLEASE LOGIN TO LINKEDIN IN THE BROWSER WINDOW <<<')
+        logger.info(f'>>> You have {timeout_seconds} seconds to login <<<')
+        logger.info('=' * 60)
+        logger.info('')
 
-            start_post.click()
-            time.sleep(2)
+        for i in range(timeout_seconds):
+            try:
+                logged_in = page.query_selector('[data-alias="feed-tab"]') or \
+                            page.query_selector('button[aria-label="Start a post"]') or \
+                            page.query_selector('.feed-identity-module') or \
+                            page.query_selector('.share-box-feed-entry__trigger')
 
-            # Find the post editor
-            editor = page.query_selector('[role="textbox"][contenteditable="true"]') or \
-                     page.query_selector('[data-testid="share-to-feed-text-area"]') or \
-                     page.query_selector('.ql-editor')
+                if logged_in:
+                    logger.info('')
+                    logger.info('=' * 60)
+                    logger.info('SUCCESS: Login detected!')
+                    logger.info('Session saved for future use.')
+                    logger.info('=' * 60)
+                    return True
+            except Exception:
+                pass
 
-            if not editor:
-                logger.error('Could not find post editor')
-                return False
-
-            # Build full post with hashtags
-            full_content = post_content
-            if hashtags:
-                full_content += '\n\n' + ' '.join(f'#{tag}' for tag in hashtags)
-
-            # Type the post
-            editor.click()
-            editor.fill(full_content)
+            if i % 30 == 0:
+                logger.info(f'  Waiting for login... ({i}/{timeout_seconds} seconds)')
             time.sleep(1)
 
-            if DRY_RUN:
-                logger.info('[DRY RUN] Post content prepared but not submitted')
-                logger.info(f'[DRY RUN] Content preview: {full_content[:100]}...')
-                # Close the modal without posting
-                close_btn = page.query_selector('[aria-label="Dismiss"]') or \
-                            page.query_selector('button:has-text("Discard")')
-                if close_btn:
-                    close_btn.click()
-                return True
+        logger.error('Login timeout - please try again')
+        return False
 
-            # Click Post button
-            post_btn = page.query_selector('button:has-text("Post")') or \
-                       page.query_selector('[data-testid="share-actions-post-button"]')
+    def human_type(self, page, text: str):
+        """Type text with human-like delays"""
+        for char in text:
+            page.keyboard.type(char)
+            time.sleep(0.08)  # 80ms delay per character
 
-            if post_btn:
-                post_btn.click()
-                time.sleep(3)
-                logger.info('Post submitted successfully!')
-                return True
-            else:
-                logger.error('Could not find Post button')
-                return False
+    def create_post(self, page, message: str) -> dict:
+        """Create a post on LinkedIn - USING WORKING APPROACH"""
+        logger.info('Creating LinkedIn post...')
 
-        except Exception as e:
-            logger.error(f'Error posting to LinkedIn: {e}')
-            return False
+        try:
+            # Step 1: Navigate to feed
+            logger.info('Step 1: Navigating to LinkedIn feed...')
+            page.goto('https://www.linkedin.com/feed/', timeout=60000)
+            time.sleep(5)
 
-    def process_approved_posts(self, page) -> int:
-        """Process all approved LinkedIn post files"""
-        post_files = list(self.approved.glob('LINKEDIN_POST_*.md'))
+            # Step 2: CRITICAL - Press Escape to dismiss any popups
+            logger.info('Step 2: Dismissing any popups (Escape x3)...')
+            for _ in range(3):
+                page.keyboard.press('Escape')
+                time.sleep(0.5)
+            time.sleep(2)
 
-        if not post_files:
-            logger.debug('No approved LinkedIn posts to process')
-            return 0
+            # Step 3: Find and click "Start a post" button
+            logger.info('Step 3: Looking for "Start a post" button...')
+            post_started = False
 
-        processed = 0
-        for post_file in post_files:
-            logger.info(f'Processing: {post_file.name}')
+            start_post_selectors = [
+                'button[aria-label="Start a post"]',
+                '.share-box-feed-entry__trigger',
+                'button.share-box-feed-entry__trigger',
+                '[data-control-name="share.share_box"]',
+            ]
 
-            try:
-                post_data = self._parse_post_file(post_file)
-
-                if not post_data['content']:
-                    logger.warning(f'No content found in {post_file.name}')
+            for selector in start_post_selectors:
+                try:
+                    elem = page.locator(selector).first
+                    if elem.count() > 0:
+                        logger.info(f'Found: {selector}')
+                        elem.click()
+                        post_started = True
+                        time.sleep(3)
+                        break
+                except:
                     continue
 
-                success = self.post_to_linkedin(
-                    page,
-                    post_data['content'],
-                    post_data['hashtags']
-                )
+            if not post_started:
+                logger.warning('Could not find Start a post button, trying text click...')
+                try:
+                    page.click('text="Start a post"', timeout=5000)
+                    time.sleep(3)
+                except:
+                    pass
 
-                if success:
-                    # Move to Done
-                    done_path = self.done / post_file.name
-                    post_file.rename(done_path)
+            # Step 4: Wait for post modal to appear
+            logger.info('Step 4: Waiting for post editor...')
+            time.sleep(3)
 
-                    self._log_action(
-                        'linkedin_post',
-                        post_file.name,
-                        'success',
-                        f'Posted to LinkedIn: {post_data["content"][:50]}...'
-                    )
-                    processed += 1
-                else:
-                    self._log_action(
-                        'linkedin_post',
-                        post_file.name,
-                        'failed',
-                        'Could not post to LinkedIn'
-                    )
+            # Step 5: Find the text editor and click it
+            logger.info('Step 5: Finding text editor...')
+            editor_found = False
 
-            except Exception as e:
-                logger.error(f'Error processing {post_file.name}: {e}')
-                self._log_action('linkedin_post', post_file.name, 'error', str(e))
+            editor_selectors = [
+                '.ql-editor[data-placeholder]',
+                'div[role="textbox"][contenteditable="true"]',
+                '.editor-content[contenteditable="true"]',
+                '[aria-label="Text editor for creating content"]',
+                'div[contenteditable="true"]',
+                'div.ql-editor',
+            ]
 
-        return processed
+            for selector in editor_selectors:
+                try:
+                    elem = page.locator(selector).first
+                    if elem.count() > 0:
+                        logger.info(f'Found editor: {selector}')
+                        elem.click()
+                        editor_found = True
+                        time.sleep(1)
+                        break
+                except:
+                    continue
 
-    def create_draft_post(self, content: str, hashtags: list = None, topic: str = "business"):
-        """Create a draft post file for approval"""
+            if not editor_found:
+                logger.warning('Could not find editor, typing anyway...')
+
+            # Step 6: Type message character by character
+            logger.info('Step 6: Typing message character by character...')
+            self.human_type(page, message)
+            time.sleep(3)
+
+            # Step 7: Take screenshot BEFORE posting
+            logger.info('Step 7: Taking screenshot before posting...')
+            before_screenshot = self.screenshots_path / 'linkedin_before_post.png'
+            page.screenshot(path=str(before_screenshot))
+
+            # Step 8: Click Post button using multiple methods
+            logger.info('Step 8: Clicking Post button...')
+
+            # Method A: JavaScript click
+            logger.info('Method A: JavaScript click...')
+            try:
+                page.evaluate("""
+                    const buttons = document.querySelectorAll('button');
+                    for (const btn of buttons) {
+                        const text = btn.textContent.trim().toLowerCase();
+                        if (text === 'post' && !btn.disabled) {
+                            btn.click();
+                            console.log('JS clicked Post');
+                            break;
+                        }
+                    }
+                """)
+                time.sleep(2)
+            except:
+                pass
+
+            # Method B: Locator click with force
+            logger.info('Method B: Force click on Post button...')
+            post_selectors = [
+                'button.share-actions__primary-action',
+                'button[aria-label="Post"]',
+                'button:has-text("Post")',
+                'button.artdeco-button--primary:has-text("Post")',
+            ]
+
+            for selector in post_selectors:
+                try:
+                    btn = page.locator(selector).first
+                    if btn.count() > 0:
+                        btn.click(force=True, timeout=3000)
+                        logger.info(f'Clicked: {selector}')
+                        time.sleep(2)
+                        break
+                except:
+                    continue
+
+            # Method C: Keyboard shortcut
+            logger.info('Method C: Ctrl+Enter shortcut...')
+            page.keyboard.press('Control+Enter')
+            time.sleep(2)
+
+            # Method D: Tab to Post button and Enter
+            logger.info('Method D: Tab navigation...')
+            for _ in range(5):
+                page.keyboard.press('Tab')
+                time.sleep(0.3)
+            page.keyboard.press('Enter')
+
+            # Step 9: Wait for post to submit
+            logger.info('Step 9: Waiting 10 seconds for submission...')
+            time.sleep(10)
+
+            # Step 10: Take screenshot AFTER posting
+            logger.info('Step 10: Taking screenshot after posting...')
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            screenshot_path = self.screenshots_path / f'linkedin_post_{timestamp}.png'
+            page.screenshot(path=str(screenshot_path))
+
+            # Also save to standard filename
+            standard_screenshot = self.screenshots_path / 'linkedin_post.png'
+            page.screenshot(path=str(standard_screenshot))
+
+            return {
+                'success': True,
+                'platform': 'linkedin',
+                'message': message,
+                'timestamp': datetime.now().isoformat(),
+                'screenshot': str(screenshot_path)
+            }
+
+        except Exception as e:
+            logger.error(f'Error creating post: {e}')
+            return {
+                'success': False,
+                'platform': 'linkedin',
+                'error': str(e),
+                'timestamp': datetime.now().isoformat()
+            }
+
+    def create_action_file(self, post_result: dict) -> Path:
+        """Create action file for the post"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"LINKEDIN_POST_{timestamp}_{topic}.md"
-        filepath = self.drafts / filename
+        filename = f"LINKEDIN_POST_{timestamp}.md"
+        filepath = self.social_media_path / filename
 
-        hashtags_str = ', '.join(hashtags) if hashtags else 'business, sales'
+        status = 'posted' if post_result.get('success') else 'failed'
 
-        draft_content = f'''---
-type: linkedin_post
-topic: {topic}
-hashtags: {hashtags_str}
-created: {datetime.now().isoformat()}
-status: draft
+        content = f'''---
+type: social_media_post
+platform: linkedin
+status: {status}
+posted_at: {post_result.get('timestamp')}
 ---
 
-# LinkedIn Post Draft
+# LinkedIn Post
 
-## Post Content
-{content}
+## Status
+**{status.upper()}**
 
-## Hashtags
-{' '.join(f'#{tag}' for tag in (hashtags or ['business', 'sales']))}
+## Content
+{post_result.get('message', 'N/A')}
 
-## To Approve
-Move this file to `/Approved/` to post on LinkedIn.
+## Screenshot
+{f"![[{Path(post_result.get('screenshot', '')).name}]]" if post_result.get('screenshot') else 'N/A'}
+
+## Details
+- Platform: LinkedIn
+- Posted: {post_result.get('timestamp')}
+- Success: {post_result.get('success', False)}
+{f"- Error: {post_result.get('error')}" if post_result.get('error') else ''}
 
 ---
-*Generated by AI Employee*
+*Generated by LinkedInPoster (Silver Tier)*
 '''
-        filepath.write_text(draft_content)
-        logger.info(f'Created draft post: {filename}')
+        filepath.write_text(content)
+        logger.info(f'Created action file: {filename}')
         return filepath
 
-    def run(self, headless: bool = False):
-        """Main run loop"""
-        mode = "DRY RUN" if DRY_RUN else "LIVE"
-        logger.info(f'Starting LinkedIn Poster [{mode} MODE]')
+    def log_action(self, action: str, details: dict):
+        """Log action to Logs folder"""
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        log_file = self.logs_path / f'linkedin_{timestamp}.log'
+
+        log_content = f'''[{datetime.now().isoformat()}] {action}
+Details: {json.dumps(details, indent=2)}
+'''
+        with open(log_file, 'a') as f:
+            f.write(log_content)
+
+    def run(self, message: str = None, headless: bool = False):
+        """Run the LinkedIn poster"""
+        logger.info('')
+        logger.info('=' * 60)
+        logger.info('STARTING LINKEDIN POSTER')
+        logger.info('=' * 60)
         logger.info(f'Vault path: {self.vault_path}')
         logger.info(f'Session path: {self.session_path}')
+        logger.info(f'Headless mode: {headless}')
+        logger.info('')
 
         with sync_playwright() as p:
+            logger.info(f'Launching Chromium browser {"(headless)" if headless else "(visible window)"}...')
+
             browser = p.chromium.launch_persistent_context(
                 str(self.session_path),
                 headless=headless,
-                args=['--disable-blink-features=AutomationControlled'],
-                viewport={'width': 1280, 'height': 800}
+                user_agent=USER_AGENT,
+                viewport={'width': 1280, 'height': 800},
+                args=[
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-blink-features=AutomationControlled',
+                ]
             )
 
-            page = browser.pages[0] if browser.pages else browser.new_page()
+            page = browser.new_page()
+            page.add_init_script(STEALTH_SCRIPT)
 
-            # Navigate to LinkedIn
-            logger.info('Navigating to LinkedIn...')
-            page.goto('https://www.linkedin.com/feed/', timeout=30000)
-            time.sleep(3)
+            try:
+                logger.info('Navigating to https://www.linkedin.com ...')
+                page.goto('https://www.linkedin.com', timeout=60000)
 
-            # Check if logged in
-            if 'login' in page.url.lower() or 'signin' in page.url.lower():
-                logger.info('Please log in to LinkedIn in the browser window...')
-                page.wait_for_url('**/feed/**', timeout=120000)
-                logger.info('Login successful!')
+                # Wait up to 180 seconds for login
+                if not self.wait_for_login(page, timeout_seconds=180):
+                    logger.error('Exiting due to login failure.')
+                    browser.close()
+                    return
 
-            # Process approved posts
-            processed = self.process_approved_posts(page)
-            logger.info(f'Processed {processed} post(s)')
+                # If message provided, post it
+                if message:
+                    result = self.create_post(page, message)
+                    self.create_action_file(result)
+                    self.log_action('POST', result)
 
-            browser.close()
+                    if result['success']:
+                        logger.info('')
+                        logger.info('=' * 60)
+                        logger.info('POST CREATED!')
+                        logger.info('Check your LinkedIn profile to verify.')
+                        logger.info('=' * 60)
+                    else:
+                        logger.error(f'Post failed: {result.get("error")}')
+                else:
+                    logger.info('No message provided. Login successful, session saved.')
 
-        logger.info('LinkedIn Poster finished.')
+                # Keep browser open briefly for verification
+                logger.info('Keeping browser open for 5 seconds...')
+                time.sleep(5)
+
+            except Exception as e:
+                logger.error(f'Error: {e}')
+
+            finally:
+                browser.close()
+
+        logger.info('LinkedIn Poster stopped.')
 
 
 def main():
@@ -294,9 +409,8 @@ def main():
     default_vault = Path(__file__).parent.parent.parent.parent / 'AI_Employee_Vault'
     default_session = Path(__file__).parent.parent.parent.parent / 'credentials' / 'linkedin_session'
 
-    args = [a for a in sys.argv[1:] if not a.startswith('--')]
-    vault_path = Path(args[0]) if len(args) > 0 else default_vault
-    session_path = Path(args[1]) if len(args) > 1 else default_session
+    vault_path = default_vault
+    session_path = default_session
 
     if not vault_path.exists():
         logger.error(f'Vault path not found: {vault_path}')
@@ -304,34 +418,37 @@ def main():
 
     headless = '--headless' in sys.argv
     test_mode = '--test' in sys.argv
-    create_draft = '--create-draft' in sys.argv
 
     poster = LinkedInPoster(str(vault_path), str(session_path))
 
     if test_mode:
-        logger.info('Running in TEST MODE')
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto('https://www.linkedin.com', timeout=30000)
-            title = page.title()
-            logger.info(f'Successfully loaded LinkedIn: {title}')
-            browser.close()
-        logger.info('TEST PASSED - LinkedIn is accessible')
-    elif create_draft:
-        # Create a sample draft post
-        sample_content = """Excited to share that our AI-powered solutions are helping businesses automate their workflows and save valuable time!
+        logger.info('')
+        logger.info('=' * 60)
+        logger.info('RUNNING IN TEST MODE')
+        logger.info('=' * 60)
 
-Whether you're looking to streamline operations, improve customer response times, or gain insights from your data - we've got you covered.
+        test_result = {
+            'success': True,
+            'platform': 'linkedin',
+            'message': 'Test LinkedIn post from AI Employee! #AIEmployee #Automation',
+            'timestamp': datetime.now().isoformat(),
+            'screenshot': None
+        }
 
-Let's connect and discuss how we can help your business grow!"""
-        poster.create_draft_post(
-            sample_content,
-            hashtags=['AI', 'Automation', 'Business', 'Productivity'],
-            topic='ai_services'
-        )
+        filepath = poster.create_action_file(test_result)
+        poster.log_action('TEST_POST', test_result)
+
+        logger.info(f'Action file created: {filepath}')
+        logger.info('TEST PASSED!')
     else:
-        poster.run(headless=headless)
+        # Get message from command line
+        message = None
+        for i, arg in enumerate(sys.argv):
+            if arg == '--message' and i + 1 < len(sys.argv):
+                message = sys.argv[i + 1]
+                break
+
+        poster.run(message=message, headless=headless)
 
 
 if __name__ == '__main__':

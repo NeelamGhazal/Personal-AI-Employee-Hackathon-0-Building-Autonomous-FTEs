@@ -137,117 +137,94 @@ class TwitterPoster:
             time.sleep(random.uniform(0.1, 0.2))
 
     def create_tweet(self, page, message: str) -> dict:
-        """Create a tweet on Twitter/X"""
+        """Create a tweet on Twitter/X - FIXED to actually post"""
         logger.info('Creating tweet...')
 
         try:
-            # Method 1: Try home feed text box first
-            logger.info('Method 1: Going to home feed...')
+            # Step 1: Navigate to home feed
+            logger.info('Step 1: Going to home feed...')
             page.goto('https://twitter.com/home', timeout=30000)
-            time.sleep(5)  # Wait for page to fully load
+            time.sleep(5)
+
+            # Step 2: CRITICAL - Press Escape 3 times to dismiss any popups/dialogs
+            logger.info('Step 2: Dismissing any popups (Escape x3)...')
+            for _ in range(3):
+                page.keyboard.press('Escape')
+                time.sleep(0.5)
+            time.sleep(2)
 
             # Re-inject stealth script
             page.evaluate(STEALTH_SCRIPT)
             time.sleep(1)
 
-            # Look for the "What is happening?!" text box on home feed
-            logger.info('Looking for home feed compose box...')
-            posted = False
+            # Step 3: Find and click compose box MULTIPLE times to ensure focus
+            logger.info('Step 3: Finding and clicking compose box...')
+            compose_clicked = False
 
-            # Try clicking the compose area
-            try:
-                compose_selectors = [
-                    '[data-testid="tweetTextarea_0"]',
-                    '[aria-label="Post text"]',
-                    'div[data-contents="true"]',
-                    '[role="textbox"]',
-                ]
+            compose_selectors = [
+                '[data-testid="tweetTextarea_0"]',
+                '[aria-label="Post text"]',
+                'div[role="textbox"]',
+            ]
 
-                for selector in compose_selectors:
-                    try:
-                        elem = page.locator(selector).first
-                        if elem.count() > 0:
-                            logger.info(f'Found compose box: {selector}')
-                            elem.click()
-                            time.sleep(2)
-                            break
-                    except:
-                        continue
-
-                # Type with human-like delays
-                logger.info('Typing tweet slowly...')
-                self.human_type(page, message)
-                time.sleep(3)  # Wait after typing
-
-                # Find and click Post button
-                logger.info('Looking for Post button...')
-                post_selectors = [
-                    '[data-testid="tweetButtonInline"]',
-                    '[data-testid="tweetButton"]',
-                ]
-
-                for selector in post_selectors:
-                    try:
-                        btn = page.locator(selector).first
-                        if btn.count() > 0:
-                            logger.info(f'Found Post button: {selector}')
-                            time.sleep(2)
-                            # Use force click to bypass any overlays
-                            btn.click(force=True, timeout=5000)
-                            posted = True
-                            logger.info('Post button clicked!')
-                            time.sleep(5)
-                            break
-                    except Exception as e:
-                        logger.info(f'Click failed for {selector}: {e}')
-                        continue
-
-            except Exception as e:
-                logger.info(f'Home feed method failed: {e}')
-
-            # Method 2: If home feed failed, try compose/tweet URL
-            if not posted:
-                logger.info('Method 2: Trying compose/tweet URL...')
-                page.goto('https://twitter.com/compose/tweet', timeout=30000)
-                time.sleep(4)
-
-                page.evaluate(STEALTH_SCRIPT)
-                time.sleep(1)
-
-                # Wait for text box
+            for selector in compose_selectors:
                 try:
-                    page.wait_for_selector('[data-testid="tweetTextarea_0"]', timeout=10000)
-                    time.sleep(2)
+                    elem = page.locator(selector).first
+                    if elem.count() > 0:
+                        logger.info(f'Found compose box: {selector}')
+                        elem.click()
+                        time.sleep(1)
+                        elem.click()  # Click again to ensure focus
+                        compose_clicked = True
+                        time.sleep(1)
+                        break
+                except:
+                    continue
 
-                    # Click and type
-                    text_area = page.locator('[data-testid="tweetTextarea_0"]').first
-                    text_area.click()
-                    time.sleep(1)
+            if not compose_clicked:
+                logger.warning('Could not find compose box!')
 
-                    logger.info('Typing tweet in compose modal...')
-                    self.human_type(page, message)
-                    time.sleep(3)
+            # Step 4: Type message character by character with delays
+            logger.info('Step 4: Typing tweet character by character...')
+            self.human_type(page, message)
+            time.sleep(3)
 
-                    # Click Post with force
-                    post_btn = page.locator('[data-testid="tweetButton"]').first
-                    time.sleep(2)
-                    post_btn.click(force=True, timeout=5000)
-                    posted = True
-                    logger.info('Posted via compose modal!')
-                    time.sleep(5)
+            # Step 5: Check if Post button is enabled
+            logger.info('Step 5: Checking Post button state...')
+            try:
+                btn = page.locator('[data-testid="tweetButtonInline"]').first
+                aria_disabled = btn.get_attribute('aria-disabled')
+                logger.info(f'Post button aria-disabled: {aria_disabled}')
+                if aria_disabled == 'true':
+                    logger.warning('Post button is DISABLED - text may not be in compose box!')
+            except:
+                pass
 
-                except Exception as e:
-                    logger.info(f'Compose URL method failed: {e}')
+            # Step 6: Use Ctrl+Enter to submit (THIS IS WHAT ACTUALLY WORKS!)
+            logger.info('Step 6: Submitting with Ctrl+Enter...')
+            page.keyboard.press('Control+Enter')
+            time.sleep(3)
 
-            # Take screenshot immediately
-            logger.info('Taking screenshot...')
+            # Step 7: Also try clicking Post button with force as backup
+            logger.info('Step 7: Clicking Post button as backup...')
+            try:
+                btn = page.locator('[data-testid="tweetButtonInline"]').first
+                if btn.count() > 0:
+                    btn.click(force=True)
+                    logger.info('Post button clicked!')
+            except Exception as e:
+                logger.debug(f'Backup click failed: {e}')
 
-            # Take screenshot as proof
+            # Step 8: Wait for submission
+            logger.info('Step 8: Waiting 5 seconds for submission...')
+            time.sleep(5)
+
+            # Step 9: Take screenshot
+            logger.info('Step 9: Taking screenshot...')
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             screenshot_path = self.screenshots_path / f'twitter_post_{timestamp}.png'
             page.screenshot(path=str(screenshot_path))
 
-            # Also save to standard filename for easy reference
             standard_screenshot = self.screenshots_path / 'twitter_post.png'
             page.screenshot(path=str(standard_screenshot))
 

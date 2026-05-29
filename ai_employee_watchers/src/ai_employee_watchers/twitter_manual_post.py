@@ -9,7 +9,7 @@ SCREENSHOTS_PATH = Path("/mnt/e/Full-Time-Equivalent-Hackathon-0/Full-Time-Equiv
 SCREENSHOTS_PATH.mkdir(parents=True, exist_ok=True)
 
 # Message to post
-MESSAGE = "AI Employee Gold Tier - Automated posting! #AIEmployee #ClaudeCode #Automation"
+MESSAGE = "AI Employee May 5 test! #AIEmployee #ClaudeCode"
 
 # Stealth settings
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
