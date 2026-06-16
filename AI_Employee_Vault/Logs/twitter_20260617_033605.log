@@ -1,0 +1,7 @@
+[2026-06-17T03:36:05.968831] TWEET
+Details: {
+  "success": false,
+  "platform": "twitter",
+  "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://twitter.com/home\", waiting until \"load\"\n",
+  "timestamp": "2026-06-17T03:36:05.953252"
+}
