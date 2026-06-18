@@ -5,6 +5,7 @@ import time
 import os
 import json
 import base64
+import argparse
 from pathlib import Path
 from datetime import datetime
 from email.utils import parsedate_to_datetime
@@ -252,22 +253,61 @@ labels: {', '.join(message['labels'])}
 
         logger.info('Gmail Watcher stopped.')
 
+    def run_once(self):
+        """Single check mode - check once and exit immediately"""
+        start_time = time.time()
+
+        if not self.authenticate():
+            logger.error('Authentication failed.')
+            return False
+
+        logger.info('Running Gmail check (once mode)...')
+        messages = self.check_for_updates()
+
+        if messages:
+            for msg in messages:
+                details = self.get_message_details(msg['id'])
+                if details:
+                    self.create_action_file(details)
+                    self.processed_ids.add(msg['id'])
+            self._save_processed_ids()
+            logger.info(f'Processed {len(messages)} new email(s)')
+        else:
+            logger.info('No new unread emails found')
+
+        elapsed = time.time() - start_time
+        logger.info(f'Gmail check completed in {elapsed:.2f} seconds')
+        return True
+
 
 def main():
     """Main entry point"""
+    parser = argparse.ArgumentParser(description='Gmail Watcher - Monitor for important emails')
+    parser.add_argument('--once', action='store_true', help='Check once and exit immediately')
+    parser.add_argument('--vault', type=str, help='Path to AI Employee Vault')
+    parser.add_argument('--credentials', type=str, help='Path to Gmail credentials JSON')
+    args = parser.parse_args()
+
     # Default paths
     default_vault = Path(__file__).parent.parent.parent.parent / 'AI_Employee_Vault'
     default_creds = Path(__file__).parent.parent.parent.parent / 'credentials' / 'gmail_credentials.json'
 
-    vault_path = Path(sys.argv[1]) if len(sys.argv) > 1 else default_vault
-    creds_path = Path(sys.argv[2]) if len(sys.argv) > 2 else default_creds
+    vault_path = Path(args.vault) if args.vault else default_vault
+    creds_path = Path(args.credentials) if args.credentials else default_creds
 
     if not vault_path.exists():
         logger.error(f'Vault path not found: {vault_path}')
         sys.exit(1)
 
     watcher = GmailWatcher(str(vault_path), str(creds_path))
-    watcher.run()
+
+    if args.once:
+        # Single check mode - fast execution for demos
+        success = watcher.run_once()
+        sys.exit(0 if success else 1)
+    else:
+        # Continuous monitoring mode
+        watcher.run()
 
 
 if __name__ == '__main__':
