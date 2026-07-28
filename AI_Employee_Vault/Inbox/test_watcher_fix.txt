@@ -1,2 +1,0 @@
-This is a test file to verify the watcher path fix is working.
-Created: 2026-04-22

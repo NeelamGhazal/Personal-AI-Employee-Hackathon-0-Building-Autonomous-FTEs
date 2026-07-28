@@ -176,7 +176,7 @@ docker compose up -d
 - JSON-RPC endpoint: `http://localhost:8069/web/dataset/call_kw`
 - Authentication: `http://localhost:8069/web/session/authenticate`
 - Database: `ai_employee`
-- Credentials: admin / admin123
+- Credentials: admin / [SET_VIA_ENV_VAR]
 
 ---
 

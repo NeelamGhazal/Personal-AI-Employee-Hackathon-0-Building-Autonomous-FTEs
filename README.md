@@ -285,7 +285,7 @@ docker compose up -d
 # Access Odoo at http://localhost:8069
 # Database: ai_employee
 # Username: admin
-# Password: admin123
+# Password: [SET_VIA_ENV_VAR]
 
 # Create invoice via JSON-RPC (see odoo_invoice.py)
 ```
@@ -403,7 +403,7 @@ docker compose up -d
 # Wait for Odoo to initialize (~2 minutes)
 # Access http://localhost:8069
 # Create database: ai_employee
-# Set admin password: admin123
+# Set admin password: [SET_VIA_ENV_VAR]
 ```
 
 ### Step 6: Setup Social Media (Gold Tier)
@@ -429,7 +429,7 @@ uv run python src/ai_employee_watchers/instagram_poster.py
 | Twitter/X | `credentials/twitter_session/` | Manual login in Playwright browser |
 | Facebook | `credentials/facebook_session/` | Manual login in Playwright browser |
 | Instagram | `credentials/instagram_session/` | Manual login in Playwright browser |
-| Odoo | Docker container | `admin` / `admin123` |
+| Odoo | Docker container | `admin` / `[SET_VIA_ENV_VAR]` |
 
 ---
 

@@ -288,7 +288,7 @@ docker.exe ps | grep odoo
 - **URL:** http://localhost:8069
 - **Database:** ai_employee
 - **Username:** admin
-- **Password:** admin123
+- **Password:** [SET_VIA_ENV_VAR]
 
 ---
 

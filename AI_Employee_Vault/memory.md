@@ -9,7 +9,7 @@
 | Component | Status | Notes |
 |-----------|--------|-------|
 | Dashboard (port 8000) | ✅ READY | 8/8 health components green |
-| Odoo ERP (port 8069) | ✅ READY | Login: admin / admin123 |
+| Odoo ERP (port 8069) | ✅ READY | Login: admin / [SET_VIA_ENV_VAR] |
 | LinkedIn Business | ✅ WORKING | GoalGetters page, 10-15 seconds, NO login needed |
 | Twitter | ✅ WORKING | Takes ~2 min but verified working |
 | Facebook | ✅ WORKING | 60-90 seconds |
@@ -145,7 +145,7 @@ curl http://localhost:8000/api/health
 ### Odoo ERP:
 - URL: http://localhost:8069
 - Database: `ai_employee`
-- User: `admin` / Password: `admin123`
+- User: `admin` / Password: `[SET_VIA_ENV_VAR]`
 - Invoice created: **INV/2026/00001**
 - Docker: `cd odoo && docker compose up -d`
 

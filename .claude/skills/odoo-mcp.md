@@ -11,7 +11,7 @@ docker compose up -d
 
 # Access Odoo at http://localhost:8069
 # Database: ai_employee
-# Credentials: admin / admin123
+# Credentials: admin / [SET_VIA_ENV_VAR]
 ```
 
 ## Available Tools
@@ -22,7 +22,7 @@ Authenticate with Odoo server.
 {
   "database": "ai_employee",
   "username": "admin",
-  "password": "admin123"
+  "password": "[SET_VIA_ENV_VAR]"
 }
 ```
 

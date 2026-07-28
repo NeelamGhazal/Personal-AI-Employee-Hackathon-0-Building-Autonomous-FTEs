@@ -2262,7 +2262,7 @@
         async function runSocialPost(platform) {
             const displayName = platform.charAt(0).toUpperCase() + platform.slice(1).replace('-', ' ');
             setTerminalStatus(true);
-            appendToTerminal(`▶️ Starting ${displayName} post (test mode)...`, 'running');
+            appendToTerminal(`▶️ Starting ${displayName} post ...`, 'running');
             showToast(`Posting to ${displayName}...`);
 
             try {
