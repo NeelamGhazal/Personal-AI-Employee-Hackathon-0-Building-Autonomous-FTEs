@@ -1,0 +1,7 @@
+[2026-07-25T23:15:55.447833] POST
+Details: {
+  "success": false,
+  "platform": "facebook",
+  "error": "Page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://www.facebook.com/\", waiting until \"load\"\n",
+  "timestamp": "2026-07-25T23:15:55.441798"
+}

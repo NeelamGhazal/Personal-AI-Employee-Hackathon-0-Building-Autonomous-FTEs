@@ -10,8 +10,9 @@ from pathlib import Path
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
+import requests as http_requests
+from urllib.parse import urlencode
 from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 
@@ -72,8 +73,14 @@ class GmailWatcher:
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
                 logger.info('Refreshing expired credentials...')
-                creds.refresh(Request())
-            else:
+                try:
+                    creds.refresh(Request())
+                except Exception as e:
+                    logger.warning(f'Token refresh failed: {e}')
+                    logger.info('Will re-authenticate...')
+                    creds = None
+
+            if not creds:
                 if not self.credentials_path.exists():
                     logger.error(f'Credentials file not found: {self.credentials_path}')
                     logger.error('Please download OAuth credentials from Google Cloud Console')
@@ -81,18 +88,39 @@ class GmailWatcher:
                     return False
 
                 logger.info('Starting OAuth flow...')
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    str(self.credentials_path), SCOPES
-                )
 
-                # Manual OAuth flow for WSL/headless environments
-                flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
-                auth_url, _ = flow.authorization_url(prompt='consent')
+                # Load client secrets
+                with open(self.credentials_path) as f:
+                    client_config = json.load(f)
+
+                # Get client ID and secret from either 'installed' or 'web' key
+                if 'installed' in client_config:
+                    client_info = client_config['installed']
+                elif 'web' in client_config:
+                    client_info = client_config['web']
+                else:
+                    logger.error('Invalid credentials file format')
+                    return False
+
+                client_id = client_info['client_id']
+                client_secret = client_info['client_secret']
+                redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+
+                # Build auth URL manually WITHOUT PKCE
+                auth_params = {
+                    'client_id': client_id,
+                    'redirect_uri': redirect_uri,
+                    'scope': ' '.join(SCOPES),
+                    'response_type': 'code',
+                    'access_type': 'offline',
+                    'prompt': 'consent'
+                }
+                auth_url = 'https://accounts.google.com/o/oauth2/v2/auth?' + urlencode(auth_params)
 
                 print("\n" + "="*60)
                 print("GMAIL AUTHENTICATION REQUIRED")
                 print("="*60)
-                print("\nStep 1: Copy this URL and open in your Windows browser:")
+                print("\nStep 1: Copy this URL and open in your browser:")
                 print(f"\n{auth_url}\n")
                 print("Step 2: Login with your Google account")
                 print("Step 3: Click 'Allow' to grant access")
@@ -100,8 +128,33 @@ class GmailWatcher:
                 print("="*60)
 
                 auth_code = input("\nPaste the authorization code here: ").strip()
-                flow.fetch_token(code=auth_code)
-                creds = flow.credentials
+
+                # Exchange code for tokens manually
+                token_url = 'https://oauth2.googleapis.com/token'
+                token_data = {
+                    'code': auth_code,
+                    'client_id': client_id,
+                    'client_secret': client_secret,
+                    'redirect_uri': redirect_uri,
+                    'grant_type': 'authorization_code'
+                }
+
+                response = http_requests.post(token_url, data=token_data)
+                if response.status_code != 200:
+                    logger.error(f'Token exchange failed: {response.text}')
+                    return False
+
+                token_info = response.json()
+
+                # Create credentials object
+                creds = Credentials(
+                    token=token_info['access_token'],
+                    refresh_token=token_info.get('refresh_token'),
+                    token_uri='https://oauth2.googleapis.com/token',
+                    client_id=client_id,
+                    client_secret=client_secret,
+                    scopes=SCOPES
+                )
 
             # Save credentials for next run
             with open(self.token_path, 'w') as token:

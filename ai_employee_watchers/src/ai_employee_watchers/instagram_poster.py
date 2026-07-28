@@ -111,34 +111,56 @@ class InstagramPoster:
         return False
 
     def create_image_with_text(self, message: str) -> str:
-        """Create an image with text for Instagram post"""
-        logger.info('Creating image with text...')
+        """Create an image with text for Instagram post - LARGE BOLD TEXT"""
+        logger.info('Creating image with text (large bold)...')
 
         # Create a 1080x1080 image (Instagram square format)
         width, height = 1080, 1080
 
-        # Gradient-like background (purple to blue)
-        img = Image.new('RGB', (width, height), color=(75, 0, 130))  # Indigo base
+        # Dark gradient background (dark blue to purple)
+        img = Image.new('RGB', (width, height), color=(20, 20, 40))
 
         draw = ImageDraw.Draw(img)
 
-        # Add gradient effect with rectangles
+        # Add dark gradient effect
         for i in range(height):
-            r = int(75 + (i / height) * 30)
-            g = int(0 + (i / height) * 100)
-            b = int(130 + (i / height) * 70)
+            r = int(20 + (i / height) * 30)
+            g = int(20 + (i / height) * 20)
+            b = int(40 + (i / height) * 60)
             draw.line([(0, i), (width, i)], fill=(r, g, b))
 
-        # Try to use a decent font, fall back to default
-        font_size = 60
-        try:
-            font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size)
-            small_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 40)
-        except:
+        # LARGE BOLD font - try multiple paths for Windows/Linux
+        font_size = 72  # Larger font
+        small_font_size = 48
+        font = None
+        small_font = None
+
+        # Font paths to try (Windows first, then Linux)
+        bold_font_paths = [
+            "C:/Windows/Fonts/arialbd.ttf",      # Arial Bold (Windows)
+            "C:/Windows/Fonts/calibrib.ttf",     # Calibri Bold (Windows)
+            "C:/Windows/Fonts/segoeui.ttf",      # Segoe UI (Windows)
+            "C:/Windows/Fonts/impact.ttf",       # Impact (Windows) - very bold
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",  # Linux
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",  # Linux
+        ]
+
+        for font_path in bold_font_paths:
+            try:
+                font = ImageFont.truetype(font_path, font_size)
+                small_font = ImageFont.truetype(font_path, small_font_size)
+                logger.info(f'Using font: {font_path}')
+                break
+            except:
+                continue
+
+        if font is None:
+            logger.warning('No TrueType font found, using default')
             font = ImageFont.load_default()
             small_font = font
 
-        # Wrap text to fit
+        # Wrap text to fit with wider margins
+        max_width = width - 150  # More margin
         words = message.split()
         lines = []
         current_line = []
@@ -147,7 +169,7 @@ class InstagramPoster:
             current_line.append(word)
             test_line = ' '.join(current_line)
             bbox = draw.textbbox((0, 0), test_line, font=font)
-            if bbox[2] > width - 100:
+            if bbox[2] > max_width:
                 current_line.pop()
                 if current_line:
                     lines.append(' '.join(current_line))
@@ -156,28 +178,31 @@ class InstagramPoster:
         if current_line:
             lines.append(' '.join(current_line))
 
-        # Calculate total text height
-        line_height = font_size + 20
+        # Calculate total text height with more spacing
+        line_height = font_size + 30  # More line spacing
         total_height = len(lines) * line_height
-        start_y = (height - total_height) // 2
+        start_y = (height - total_height) // 2 - 40  # Shift up a bit
 
-        # Draw text with shadow effect
+        # Draw text with stronger shadow effect
         for i, line in enumerate(lines):
             bbox = draw.textbbox((0, 0), line, font=font)
             text_width = bbox[2] - bbox[0]
             x = (width - text_width) // 2
             y = start_y + i * line_height
 
-            # Shadow
-            draw.text((x + 3, y + 3), line, font=font, fill=(0, 0, 0, 128))
-            # Main text
+            # Stronger shadow (multiple layers for bold effect)
+            for offset in [(4, 4), (3, 3), (2, 2)]:
+                draw.text((x + offset[0], y + offset[1]), line, font=font, fill=(0, 0, 0))
+            # Main text - bright white
             draw.text((x, y), line, font=font, fill=(255, 255, 255))
 
         # Add branding at bottom
-        branding = "AI Employee - Gold Tier"
+        branding = "GoalGetters AI Employee"
         bbox = draw.textbbox((0, 0), branding, font=small_font)
         brand_x = (width - (bbox[2] - bbox[0])) // 2
-        draw.text((brand_x, height - 80), branding, font=small_font, fill=(255, 255, 255, 200))
+        # Shadow for branding
+        draw.text((brand_x + 2, height - 100 + 2), branding, font=small_font, fill=(0, 0, 0))
+        draw.text((brand_x, height - 100), branding, font=small_font, fill=(255, 255, 255))
 
         # Save to temp file
         temp_path = self.screenshots_path / 'temp_instagram_image.png'

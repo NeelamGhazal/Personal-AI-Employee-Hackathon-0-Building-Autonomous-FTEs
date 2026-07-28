@@ -117,3 +117,262 @@
 [2026-06-18 17:30:09] Running approval orchestrator...
 [2026-06-18 17:30:10] AI Employee scheduled run complete
 ---
+[2026-06-18 17:35:08] Starting AI Employee scheduled run
+[2026-06-18 17:35:08] Running reasoning loop...
+2026-06-18 17:35:09,682 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 17:35:09] Running approval orchestrator...
+[2026-06-18 17:35:11] AI Employee scheduled run complete
+---
+[2026-06-18 18:55:05] Starting AI Employee scheduled run
+[2026-06-18 18:55:05] Running reasoning loop...
+2026-06-18 18:55:07,811 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 18:55:07] Running approval orchestrator...
+[2026-06-18 18:55:08] AI Employee scheduled run complete
+---
+[2026-06-18 19:00:06] Starting AI Employee scheduled run
+[2026-06-18 19:00:06] Running reasoning loop...
+2026-06-18 19:00:07,448 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:00:07] Running approval orchestrator...
+[2026-06-18 19:00:08] AI Employee scheduled run complete
+---
+[2026-06-18 19:05:06] Starting AI Employee scheduled run
+[2026-06-18 19:05:06] Running reasoning loop...
+2026-06-18 19:05:07,192 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:05:07] Running approval orchestrator...
+[2026-06-18 19:05:07] AI Employee scheduled run complete
+---
+[2026-06-18 19:10:07] Starting AI Employee scheduled run
+[2026-06-18 19:10:07] Running reasoning loop...
+2026-06-18 19:10:10,602 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:10:10] Running approval orchestrator...
+[2026-06-18 19:10:13] AI Employee scheduled run complete
+---
+[2026-06-18 19:15:07] Starting AI Employee scheduled run
+[2026-06-18 19:15:07] Running reasoning loop...
+2026-06-18 19:15:19,387 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:15:19] Running approval orchestrator...
+[2026-06-18 19:15:28] AI Employee scheduled run complete
+---
+[2026-06-18 19:20:04] Starting AI Employee scheduled run
+[2026-06-18 19:20:04] Running reasoning loop...
+2026-06-18 19:20:05,478 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:20:05] Running approval orchestrator...
+[2026-06-18 19:20:06] AI Employee scheduled run complete
+---
+[2026-06-18 19:25:06] Starting AI Employee scheduled run
+[2026-06-18 19:25:06] Running reasoning loop...
+2026-06-18 19:25:07,449 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:25:07] Running approval orchestrator...
+[2026-06-18 19:25:08] AI Employee scheduled run complete
+---
+[2026-06-18 19:30:06] Starting AI Employee scheduled run
+[2026-06-18 19:30:06] Running reasoning loop...
+2026-06-18 19:30:07,204 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:30:07] Running approval orchestrator...
+[2026-06-18 19:30:07] AI Employee scheduled run complete
+---
+[2026-06-18 19:35:07] Starting AI Employee scheduled run
+[2026-06-18 19:35:07] Running reasoning loop...
+2026-06-18 19:35:08,442 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:35:08] Running approval orchestrator...
+[2026-06-18 19:35:09] AI Employee scheduled run complete
+---
+[2026-06-18 19:40:07] Starting AI Employee scheduled run
+[2026-06-18 19:40:07] Running reasoning loop...
+2026-06-18 19:40:07,751 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:40:07] Running approval orchestrator...
+[2026-06-18 19:40:08] AI Employee scheduled run complete
+---
+[2026-06-18 19:45:07] Starting AI Employee scheduled run
+[2026-06-18 19:45:07] Running reasoning loop...
+2026-06-18 19:45:08,567 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:45:08] Running approval orchestrator...
+[2026-06-18 19:45:10] AI Employee scheduled run complete
+---
+[2026-06-18 19:50:03] Starting AI Employee scheduled run
+[2026-06-18 19:50:03] Running reasoning loop...
+2026-06-18 19:50:04,675 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:50:04] Running approval orchestrator...
+[2026-06-18 19:50:05] AI Employee scheduled run complete
+---
+[2026-06-18 19:55:06] Starting AI Employee scheduled run
+[2026-06-18 19:55:06] Running reasoning loop...
+2026-06-18 19:55:08,574 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 19:55:08] Running approval orchestrator...
+[2026-06-18 19:55:09] AI Employee scheduled run complete
+---
+[2026-06-18 20:00:06] Starting AI Employee scheduled run
+[2026-06-18 20:00:06] Running reasoning loop...
+2026-06-18 20:00:07,710 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 20:00:07] Running approval orchestrator...
+[2026-06-18 20:00:08] AI Employee scheduled run complete
+---
+[2026-06-18 20:05:07] Starting AI Employee scheduled run
+[2026-06-18 20:05:07] Running reasoning loop...
+2026-06-18 20:05:08,286 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 20:05:08] Running approval orchestrator...
+[2026-06-18 20:05:09] AI Employee scheduled run complete
+---
+[2026-06-18 20:10:06] Starting AI Employee scheduled run
+[2026-06-18 20:10:06] Running reasoning loop...
+2026-06-18 20:10:07,506 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 20:10:07] Running approval orchestrator...
+[2026-06-18 20:10:08] AI Employee scheduled run complete
+---
+[2026-06-18 20:45:49] Starting AI Employee scheduled run
+[2026-06-18 20:45:50] Running reasoning loop...
+2026-06-18 20:45:51,013 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 20:45:51] Running approval orchestrator...
+[2026-06-18 20:45:51] AI Employee scheduled run complete
+---
+[2026-06-18 20:50:03] Starting AI Employee scheduled run
+[2026-06-18 20:50:03] Running reasoning loop...
+2026-06-18 20:50:04,317 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 20:50:04] Running approval orchestrator...
+[2026-06-18 20:50:05] AI Employee scheduled run complete
+---
+[2026-06-18 20:55:07] Starting AI Employee scheduled run
+[2026-06-18 20:55:07] Running reasoning loop...
+2026-06-18 20:55:07,949 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 20:55:07] Running approval orchestrator...
+[2026-06-18 20:55:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:00:07] Starting AI Employee scheduled run
+[2026-06-18 21:00:07] Running reasoning loop...
+2026-06-18 21:00:07,655 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:00:07] Running approval orchestrator...
+[2026-06-18 21:00:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:05:06] Starting AI Employee scheduled run
+[2026-06-18 21:05:06] Running reasoning loop...
+2026-06-18 21:05:07,591 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:05:07] Running approval orchestrator...
+[2026-06-18 21:05:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:10:07] Starting AI Employee scheduled run
+[2026-06-18 21:10:07] Running reasoning loop...
+2026-06-18 21:10:07,832 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:10:07] Running approval orchestrator...
+[2026-06-18 21:10:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:15:07] Starting AI Employee scheduled run
+[2026-06-18 21:15:07] Running reasoning loop...
+2026-06-18 21:15:08,031 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:15:08] Running approval orchestrator...
+[2026-06-18 21:15:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:20:04] Starting AI Employee scheduled run
+[2026-06-18 21:20:04] Running reasoning loop...
+2026-06-18 21:20:05,668 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:20:05] Running approval orchestrator...
+[2026-06-18 21:20:06] AI Employee scheduled run complete
+---
+[2026-06-18 21:25:07] Starting AI Employee scheduled run
+[2026-06-18 21:25:07] Running reasoning loop...
+2026-06-18 21:25:08,776 - ReasoningLoop - INFO - Processing: FILE_20260618_212246_live_demo_1781799765.md
+2026-06-18 21:25:08,792 - ReasoningLoop - INFO - Created plan: PLAN_20260618_212508_FILE_20260618_212246_live_demo.md
+2026-06-18 21:25:08,804 - ReasoningLoop - INFO - Processing: FILE_20260618_212321_live_demo_1781799800.md
+2026-06-18 21:25:08,823 - ReasoningLoop - INFO - Created plan: PLAN_20260618_212508_FILE_20260618_212321_live_demo.md
+2026-06-18 21:25:08,840 - ReasoningLoop - INFO - Processed 2 item(s)
+[2026-06-18 21:25:08] Running approval orchestrator...
+[2026-06-18 21:25:10] AI Employee scheduled run complete
+---
+[2026-06-18 21:30:06] Starting AI Employee scheduled run
+[2026-06-18 21:30:06] Running reasoning loop...
+2026-06-18 21:30:08,511 - ReasoningLoop - INFO - Processing: FILE_20260618_212956_live_demo_test.md
+2026-06-18 21:30:08,525 - ReasoningLoop - INFO - Created plan: PLAN_20260618_213008_FILE_20260618_212956_live_demo.md
+2026-06-18 21:30:08,541 - ReasoningLoop - INFO - Processed 1 item(s)
+[2026-06-18 21:30:08] Running approval orchestrator...
+[2026-06-18 21:30:09] AI Employee scheduled run complete
+---
+[2026-06-18 21:35:07] Starting AI Employee scheduled run
+[2026-06-18 21:35:07] Running reasoning loop...
+2026-06-18 21:35:08,191 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:35:08] Running approval orchestrator...
+[2026-06-18 21:35:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:40:07] Starting AI Employee scheduled run
+[2026-06-18 21:40:07] Running reasoning loop...
+2026-06-18 21:40:07,965 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:40:07] Running approval orchestrator...
+[2026-06-18 21:40:08] AI Employee scheduled run complete
+---
+[2026-06-18 21:45:07] Starting AI Employee scheduled run
+[2026-06-18 21:45:07] Running reasoning loop...
+2026-06-18 21:45:07,994 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_01_test_bronze.md
+2026-06-18 21:45:08,002 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214507_FILE_20260618_214106_01_test_b.md
+2026-06-18 21:45:08,017 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_bronze_tier_test.md
+2026-06-18 21:45:08,032 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_bronze_ti.md
+2026-06-18 21:45:08,048 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_business_invoice.md
+2026-06-18 21:45:08,060 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_business_.md
+2026-06-18 21:45:08,065 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_business_.md
+2026-06-18 21:45:08,076 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_client_invoice_request.md
+2026-06-18 21:45:08,088 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_client_in.md
+2026-06-18 21:45:08,093 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_client_in.md
+2026-06-18 21:45:08,105 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_client_invoice_request_demo.md
+2026-06-18 21:45:08,117 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_client_in.md
+2026-06-18 21:45:08,123 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_client_in.md
+2026-06-18 21:45:08,132 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_client_whatsapp_invoice_reques.md
+2026-06-18 21:45:08,149 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_client_wh.md
+2026-06-18 21:45:08,155 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_client_wh.md
+2026-06-18 21:45:08,165 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_DEMO_EMAIL_20260601_194651.md
+2026-06-18 21:45:08,182 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_DEMO_EMAI.md
+2026-06-18 21:45:08,187 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_DEMO_EMAI.md
+2026-06-18 21:45:08,197 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_demo_task.md
+2026-06-18 21:45:08,219 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_demo_task.md
+2026-06-18 21:45:08,228 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_demo_test.md
+2026-06-18 21:45:08,240 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_demo_test.md
+2026-06-18 21:45:08,254 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_gold_demo.md
+2026-06-18 21:45:08,263 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_gold_demo.md
+2026-06-18 21:45:08,281 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_invoice_april_abc.md
+2026-06-18 21:45:08,290 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_invoice_a.md
+2026-06-18 21:45:08,297 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_invoice_a.md
+2026-06-18 21:45:08,311 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_live_demo_1781799765.md
+2026-06-18 21:45:08,329 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_live_demo.md
+2026-06-18 21:45:08,338 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_live_demo_1781799800.md
+2026-06-18 21:45:08,349 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_live_demo.md
+2026-06-18 21:45:08,370 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_live_demo_test.md
+2026-06-18 21:45:08,380 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_live_demo.md
+2026-06-18 21:45:08,397 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_task1.md
+2026-06-18 21:45:08,413 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_task1.md
+2026-06-18 21:45:08,427 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_test_bronze_demo.md
+2026-06-18 21:45:08,436 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_test_bron.md
+2026-06-18 21:45:08,449 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_test_bronze_tier.md
+2026-06-18 21:45:08,461 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_test_bron.md
+2026-06-18 21:45:08,474 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_test_bronze_tier_demo.md
+2026-06-18 21:45:08,485 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_test_bron.md
+2026-06-18 21:45:08,499 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_test_bronz_tier_done.md
+2026-06-18 21:45:08,510 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_test_bron.md
+2026-06-18 21:45:08,525 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_test_silver.md
+2026-06-18 21:45:08,544 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_test_silv.md
+2026-06-18 21:45:08,554 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_test_watcher_fix.md
+2026-06-18 21:45:08,568 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_test_watc.md
+2026-06-18 21:45:08,583 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_urgent_client_request.md
+2026-06-18 21:45:08,593 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_urgent_cl.md
+2026-06-18 21:45:08,607 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_urgent_invoice_request.md
+2026-06-18 21:45:08,616 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_urgent_in.md
+2026-06-18 21:45:08,624 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260618_214508_FILE_20260618_214106_urgent_in.md
+2026-06-18 21:45:08,636 - ReasoningLoop - INFO - Processing: FILE_20260618_214106_video_demo_1781800864.md
+2026-06-18 21:45:08,648 - ReasoningLoop - INFO - Created plan: PLAN_20260618_214508_FILE_20260618_214106_video_dem.md
+2026-06-18 21:45:08,671 - ReasoningLoop - INFO - Processed 24 item(s)
+[2026-06-18 21:45:08] Running approval orchestrator...
+[2026-06-18 21:45:09] AI Employee scheduled run complete
+---
+[2026-06-18 21:50:04] Starting AI Employee scheduled run
+[2026-06-18 21:50:04] Running reasoning loop...
+2026-06-18 21:50:05,164 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:50:05] Running approval orchestrator...
+[2026-06-18 21:50:05] AI Employee scheduled run complete
+---
+[2026-06-18 21:55:07] Starting AI Employee scheduled run
+[2026-06-18 21:55:07] Running reasoning loop...
+2026-06-18 21:55:08,484 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 21:55:08] Running approval orchestrator...
+[2026-06-18 21:55:09] AI Employee scheduled run complete
+---
+[2026-06-18 22:00:06] Starting AI Employee scheduled run
+[2026-06-18 22:00:06] Running reasoning loop...
+2026-06-18 22:00:07,296 - ReasoningLoop - INFO - No new items to process
+[2026-06-18 22:00:07] Running approval orchestrator...
+[2026-06-18 22:00:07] AI Employee scheduled run complete
+---

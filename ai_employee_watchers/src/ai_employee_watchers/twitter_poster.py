@@ -4,8 +4,13 @@ import sys
 import time
 import json
 import random
+import os
 from pathlib import Path
 from datetime import datetime
+
+# Twitter credentials (password from environment variable for security)
+TWITTER_USERNAME = 'ShanayaKhan0907'
+TWITTER_PASSWORD = os.environ.get('TWITTER_PASSWORD', '')
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
@@ -71,55 +76,221 @@ class TwitterPoster:
         with open(self.posted_ids_file, 'w') as f:
             json.dump(self.posted_ids[-100:], f)
 
-    def wait_for_login(self, page):
-        """Wait for user to login to Twitter/X"""
-        logger.info('')
-        logger.info('=' * 60)
-        logger.info('WAITING FOR TWITTER/X LOGIN...')
-        logger.info('=' * 60)
-
-        # Step 1: Wait for page to load
-        logger.info('Step 1: Waiting for page to load (10 seconds)...')
-        time.sleep(10)
-
-        # Step 2: Check if already logged in
-        logger.info('Step 2: Checking if already logged in...')
+    def check_logged_in(self, page):
+        """Check if already logged in to Twitter/X"""
         try:
-            # Look for elements that indicate logged-in state
             logged_in = page.query_selector('[data-testid="SideNav_NewTweet_Button"]') or \
                         page.query_selector('[aria-label="Post"]') or \
                         page.query_selector('[data-testid="AppTabBar_Home_Link"]') or \
                         page.query_selector('[aria-label="Home"]')
+            return logged_in is not None
+        except:
+            return False
 
-            if logged_in:
+    def auto_login(self, page):
+        """Automatically login to Twitter/X using credentials from environment"""
+        logger.info('')
+        logger.info('=' * 60)
+        logger.info('AUTO-LOGIN TO TWITTER/X')
+        logger.info('=' * 60)
+
+        if not TWITTER_PASSWORD:
+            logger.warning('TWITTER_PASSWORD environment variable not set!')
+            logger.warning('Run with: TWITTER_PASSWORD="yourpass" python twitter_poster.py')
+            return False
+
+        try:
+            # Navigate to login page
+            logger.info('Step 1: Going to login page...')
+            page.goto('https://twitter.com/i/flow/login', timeout=30000)
+            time.sleep(5)
+
+            # Step 2: Enter username
+            logger.info('Step 2: Entering username...')
+            try:
+                page.fill('input[autocomplete="username"]', TWITTER_USERNAME, timeout=5000)
+            except:
+                # Fallback to JavaScript
+                page.evaluate(f"""() => {{
+                    const input = document.querySelector('input[autocomplete="username"]');
+                    if (input) {{
+                        input.focus();
+                        input.value = '{TWITTER_USERNAME}';
+                        input.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                    }}
+                }}""")
+            time.sleep(1)
+
+            # Step 3: Click Next/Continue button
+            logger.info('Step 3: Clicking Next/Continue button...')
+            clicked = False
+
+            # Try multiple selectors for the Next/Continue button
+            button_selectors = [
+                'button:has-text("Next")',
+                'button:has-text("Continue")',
+                '[role="button"]:has-text("Continue")',
+                '[role="button"]:has-text("Next")',
+                'input[type="submit"]',
+                '[data-testid="LoginForm_Login_Button"]',
+            ]
+
+            for selector in button_selectors:
+                try:
+                    btn = page.locator(selector).first
+                    if btn.count() > 0 and btn.is_visible():
+                        logger.info(f'   Found button: {selector}')
+                        btn.click()
+                        clicked = True
+                        break
+                except:
+                    continue
+
+            if not clicked:
+                # Try JavaScript click as fallback
+                logger.info('   Trying JavaScript click...')
+                page.evaluate("""() => {
+                    const btns = document.querySelectorAll('button, [role="button"]');
+                    for (const btn of btns) {
+                        const text = btn.textContent.toLowerCase();
+                        if (text.includes('next') || text.includes('continue')) {
+                            btn.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }""")
+
+            time.sleep(3)
+
+            # Step 4: Check if Twitter asks for phone/email verification
+            logger.info('Step 4: Checking for verification prompt...')
+            try:
+                verify_field = page.locator('input[data-testid="ocfEnterTextTextInput"]').first
+                if verify_field.count() > 0 and verify_field.is_visible():
+                    logger.info('   Phone/email verification required - entering username...')
+                    verify_field.fill(TWITTER_USERNAME)
+                    time.sleep(1)
+                    page.click('button:has-text("Next")')
+                    time.sleep(3)
+            except:
+                pass
+
+            # Step 5: Wait for and enter password
+            logger.info('Step 5: Waiting for password field...')
+            try:
+                page.wait_for_selector('input[type="password"]', timeout=10000)
+            except:
+                logger.warning('   Password field not found immediately, waiting...')
+                time.sleep(3)
+
+            # Try to fill password directly (avoid click timeout)
+            logger.info('   Found password field, entering password...')
+            try:
+                page.fill('input[type="password"]', TWITTER_PASSWORD, timeout=5000)
+                time.sleep(1)
+            except Exception as e:
+                logger.warning(f'   Direct fill failed: {e}')
+                # Try JavaScript approach
+                logger.info('   Trying JavaScript to enter password...')
+                page.evaluate(f"""() => {{
+                    const input = document.querySelector('input[type="password"]');
+                    if (input) {{
+                        input.focus();
+                        input.value = '{TWITTER_PASSWORD}';
+                        input.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                    }}
+                }}""")
+
+            # Step 6: Submit login
+            logger.info('Step 6: Submitting login...')
+
+            # Try clicking Log in button first
+            login_selectors = [
+                'button:has-text("Log in")',
+                '[data-testid="LoginForm_Login_Button"]',
+                'button[type="submit"]',
+            ]
+
+            clicked = False
+            for selector in login_selectors:
+                try:
+                    btn = page.locator(selector).first
+                    if btn.count() > 0 and btn.is_visible():
+                        logger.info(f'   Clicking: {selector}')
+                        btn.click()
+                        clicked = True
+                        break
+                except:
+                    continue
+
+            if not clicked:
+                # Fallback to Enter key
+                logger.info('   Using Enter key...')
+                page.keyboard.press('Enter')
+
+            time.sleep(8)
+
+            # Step 7: Verify login success
+            logger.info('Step 7: Verifying login...')
+            if self.check_logged_in(page):
                 logger.info('')
                 logger.info('=' * 60)
-                logger.info('SUCCESS: Already logged in to Twitter/X!')
-                logger.info('Session was restored from previous login.')
+                logger.info('SUCCESS: Auto-login completed!')
+                logger.info('Session saved for future use.')
                 logger.info('=' * 60)
                 return True
-        except Exception as e:
-            logger.debug(f'Login check error: {e}')
+            else:
+                logger.warning('Login may have failed - checking again...')
+                time.sleep(5)
+                return self.check_logged_in(page)
 
-        # Step 3: Wait for manual login
-        logger.info('Step 3: Not logged in. Please login manually...')
+        except Exception as e:
+            logger.error(f'Auto-login error: {e}')
+            return False
+
+    def wait_for_login(self, page):
+        """Wait for user to login to Twitter/X"""
+        logger.info('')
+        logger.info('=' * 60)
+        logger.info('CHECKING TWITTER/X LOGIN...')
+        logger.info('=' * 60)
+
+        # Step 1: Wait for page to load
+        logger.info('Step 1: Waiting for page to load (5 seconds)...')
+        time.sleep(5)
+
+        # Step 2: Check if already logged in
+        logger.info('Step 2: Checking if already logged in...')
+        if self.check_logged_in(page):
+            logger.info('')
+            logger.info('=' * 60)
+            logger.info('SUCCESS: Already logged in to Twitter/X!')
+            logger.info('Session was restored from previous login.')
+            logger.info('=' * 60)
+            return True
+
+        # Step 3: Try auto-login if password is available
+        logger.info('Step 3: Not logged in. Attempting auto-login...')
+        if TWITTER_PASSWORD:
+            if self.auto_login(page):
+                return True
+            logger.warning('Auto-login failed, falling back to manual login...')
+
+        # Step 4: Wait for manual login
         logger.info('')
         logger.info('>>> ENTER CREDENTIALS IN THE BROWSER WINDOW <<<')
         logger.info('')
 
         for i in range(180):
             try:
-                logged_in = page.query_selector('[data-testid="SideNav_NewTweet_Button"]') or \
-                            page.query_selector('[aria-label="Post"]') or \
-                            page.query_selector('[data-testid="AppTabBar_Home_Link"]')
-
-                if logged_in:
+                if self.check_logged_in(page):
                     logger.info('')
                     logger.info('=' * 60)
                     logger.info('SUCCESS: Login detected!')
                     logger.info('=' * 60)
                     return True
-            except Exception:
+            except:
                 pass
 
             if i % 10 == 0:
@@ -308,45 +479,43 @@ Details: {json.dumps(details, indent=2)}
         logger.info('')
 
         with sync_playwright() as p:
-            logger.info(f'Launching Chromium browser {"(headless)" if headless else "(visible window)"}...')
-            logger.info('Using stealth mode to avoid bot detection...')
+            logger.info(f'Launching Chrome browser {"(headless)" if headless else "(visible window)"}...')
+            logger.info('Using Playwright session with Chrome channel...')
 
-            # Anti-detection browser options
+            # Use Playwright's own session but with Chrome browser
             browser = p.chromium.launch_persistent_context(
                 str(self.session_path),
+                channel="chrome",  # Use installed Chrome (less bot detection)
                 headless=headless,
-                user_agent=CHROME_USER_AGENT,
                 viewport={'width': 1280, 'height': 720},
-                locale='en-US',
-                timezone_id='America/New_York',
                 args=[
                     '--no-sandbox',
                     '--disable-dev-shm-usage',
                     '--disable-blink-features=AutomationControlled',
-                    '--disable-infobars',
-                    '--disable-extensions',
-                    '--start-maximized',
                 ]
             )
 
             page = browser.new_page()
 
-            # Inject stealth script to hide automation
-            page.add_init_script(STEALTH_SCRIPT)
-
-            # Also run it immediately on current page
-            page.evaluate(STEALTH_SCRIPT)
-
             try:
                 logger.info('Navigating to https://twitter.com ...')
-                time.sleep(2)  # Small delay before navigation
                 page.goto('https://twitter.com', timeout=60000)
-                time.sleep(3)  # Wait for page to fully load
+                time.sleep(5)  # Wait for page to fully load
 
-                if not self.wait_for_login(page):
-                    logger.error('Exiting due to login failure.')
-                    browser.close()
-                    return
+                # Check if logged in (should be, using Chrome profile)
+                if not self.check_logged_in(page):
+                    logger.warning('Not logged in - please log in to Twitter in your Chrome browser first!')
+                    logger.info('Waiting for login...')
+                    if not self.wait_for_login(page):
+                        logger.error('Exiting due to login failure.')
+                        browser.close()
+                        return  # Only return on login FAILURE
+
+                # Now logged in - proceed to post
+                logger.info('')
+                logger.info('=' * 60)
+                logger.info('LOGGED IN - READY TO POST')
+                logger.info('=' * 60)
 
                 if message:
                     result = self.create_tweet(page, message)

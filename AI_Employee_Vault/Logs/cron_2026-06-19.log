@@ -1,0 +1,674 @@
+[2026-06-19 00:40:05] Starting AI Employee scheduled run
+[2026-06-19 00:40:05] Running reasoning loop...
+2026-06-19 00:40:06,742 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 00:40:06] Running approval orchestrator...
+[2026-06-19 00:40:07] AI Employee scheduled run complete
+---
+[2026-06-19 00:45:07] Starting AI Employee scheduled run
+[2026-06-19 00:45:07] Running reasoning loop...
+2026-06-19 00:45:08,775 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 00:45:08] Running approval orchestrator...
+[2026-06-19 00:45:10] AI Employee scheduled run complete
+---
+[2026-06-19 00:50:06] Starting AI Employee scheduled run
+[2026-06-19 00:50:06] Running reasoning loop...
+2026-06-19 00:50:08,015 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 00:50:08] Running approval orchestrator...
+[2026-06-19 00:50:08] AI Employee scheduled run complete
+---
+[2026-06-19 00:55:07] Starting AI Employee scheduled run
+[2026-06-19 00:55:07] Running reasoning loop...
+2026-06-19 00:55:08,352 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 00:55:08] Running approval orchestrator...
+[2026-06-19 00:55:09] AI Employee scheduled run complete
+---
+[2026-06-19 01:00:01] Starting AI Employee scheduled run
+[2026-06-19 01:00:01] Running reasoning loop...
+2026-06-19 01:00:03,975 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_01_test_bronze.md
+2026-06-19 01:00:03,991 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010003_FILE_20260619_005743_01_test_b.md
+2026-06-19 01:00:04,018 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_bronze_tier_test.md
+2026-06-19 01:00:04,039 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_bronze_ti.md
+2026-06-19 01:00:04,062 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_business_invoice.md
+2026-06-19 01:00:04,090 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_business_.md
+2026-06-19 01:00:04,102 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005743_business_.md
+2026-06-19 01:00:04,119 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_client_invoice_request.md
+2026-06-19 01:00:04,137 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_client_in.md
+2026-06-19 01:00:04,146 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005743_client_in.md
+2026-06-19 01:00:04,168 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_client_invoice_request_demo.md
+2026-06-19 01:00:04,187 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_client_in.md
+2026-06-19 01:00:04,198 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005743_client_in.md
+2026-06-19 01:00:04,218 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_client_whatsapp_invoice_reques.md
+2026-06-19 01:00:04,234 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_client_wh.md
+2026-06-19 01:00:04,251 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005743_client_wh.md
+2026-06-19 01:00:04,270 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_demo_$(date_+%s).md
+2026-06-19 01:00:04,284 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_demo_$(da.md
+2026-06-19 01:00:04,307 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_DEMO_EMAIL_20260601_194651.md
+2026-06-19 01:00:04,322 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_DEMO_EMAI.md
+2026-06-19 01:00:04,332 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005743_DEMO_EMAI.md
+2026-06-19 01:00:04,353 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_demo_task.md
+2026-06-19 01:00:04,377 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_demo_task.md
+2026-06-19 01:00:04,399 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_demo_test.md
+2026-06-19 01:00:04,418 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_demo_test.md
+2026-06-19 01:00:04,442 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_gold_demo.md
+2026-06-19 01:00:04,458 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_gold_demo.md
+2026-06-19 01:00:04,477 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_invoice_april_abc.md
+2026-06-19 01:00:04,492 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_invoice_a.md
+2026-06-19 01:00:04,505 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005743_invoice_a.md
+2026-06-19 01:00:04,528 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_live_demo_1781799765.md
+2026-06-19 01:00:04,544 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_live_demo.md
+2026-06-19 01:00:04,567 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_live_demo_1781799800.md
+2026-06-19 01:00:04,584 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_live_demo.md
+2026-06-19 01:00:04,613 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_live_demo_test.md
+2026-06-19 01:00:04,630 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_live_demo.md
+2026-06-19 01:00:04,657 - ReasoningLoop - INFO - Processing: FILE_20260619_005743_task1.md
+2026-06-19 01:00:04,675 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005743_task1.md
+2026-06-19 01:00:04,692 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_test_bronze_demo.md
+2026-06-19 01:00:04,709 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_test_bron.md
+2026-06-19 01:00:04,732 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_test_bronze_tier.md
+2026-06-19 01:00:04,746 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_test_bron.md
+2026-06-19 01:00:04,769 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_test_bronze_tier_demo.md
+2026-06-19 01:00:04,782 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_test_bron.md
+2026-06-19 01:00:04,807 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_test_bronz_tier_done.md
+2026-06-19 01:00:04,823 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_test_bron.md
+2026-06-19 01:00:04,844 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_test_silver.md
+2026-06-19 01:00:04,858 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_test_silv.md
+2026-06-19 01:00:04,880 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_test_watcher_fix.md
+2026-06-19 01:00:04,896 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_test_watc.md
+2026-06-19 01:00:04,918 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_urgent_client_request.md
+2026-06-19 01:00:04,933 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_urgent_cl.md
+2026-06-19 01:00:04,964 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_urgent_invoice_request.md
+2026-06-19 01:00:04,982 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010004_FILE_20260619_005744_urgent_in.md
+2026-06-19 01:00:04,996 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010004_FILE_20260619_005744_urgent_in.md
+2026-06-19 01:00:05,014 - ReasoningLoop - INFO - Processing: FILE_20260619_005744_video_demo_1781800864.md
+2026-06-19 01:00:05,033 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005744_video_dem.md
+2026-06-19 01:00:05,055 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_01_test_bronze.md
+2026-06-19 01:00:05,075 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_01_test_b.md
+2026-06-19 01:00:05,092 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_bronze_tier_test.md
+2026-06-19 01:00:05,111 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_bronze_ti.md
+2026-06-19 01:00:05,132 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_business_invoice.md
+2026-06-19 01:00:05,148 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_business_.md
+2026-06-19 01:00:05,164 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010005_FILE_20260619_005818_business_.md
+2026-06-19 01:00:05,186 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_client_invoice_request.md
+2026-06-19 01:00:05,206 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_client_in.md
+2026-06-19 01:00:05,214 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010005_FILE_20260619_005818_client_in.md
+2026-06-19 01:00:05,238 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_client_invoice_request_demo.md
+2026-06-19 01:00:05,253 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_client_in.md
+2026-06-19 01:00:05,265 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010005_FILE_20260619_005818_client_in.md
+2026-06-19 01:00:05,285 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_client_whatsapp_invoice_reques.md
+2026-06-19 01:00:05,301 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_client_wh.md
+2026-06-19 01:00:05,311 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010005_FILE_20260619_005818_client_wh.md
+2026-06-19 01:00:05,331 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_demo_$(date_+%s).md
+2026-06-19 01:00:05,357 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_demo_$(da.md
+2026-06-19 01:00:05,379 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_DEMO_EMAIL_20260601_194651.md
+2026-06-19 01:00:05,396 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_DEMO_EMAI.md
+2026-06-19 01:00:05,408 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010005_FILE_20260619_005818_DEMO_EMAI.md
+2026-06-19 01:00:05,432 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_demo_task.md
+2026-06-19 01:00:05,448 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_demo_task.md
+2026-06-19 01:00:05,477 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_demo_test.md
+2026-06-19 01:00:05,492 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_demo_test.md
+2026-06-19 01:00:05,515 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_gold_demo.md
+2026-06-19 01:00:05,535 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_gold_demo.md
+2026-06-19 01:00:05,558 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_invoice_april_abc.md
+2026-06-19 01:00:05,577 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_invoice_a.md
+2026-06-19 01:00:05,584 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010005_FILE_20260619_005818_invoice_a.md
+2026-06-19 01:00:05,608 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_live_demo_1781799765.md
+2026-06-19 01:00:05,625 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_live_demo.md
+2026-06-19 01:00:05,648 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_live_demo_1781799800.md
+2026-06-19 01:00:05,666 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_live_demo.md
+2026-06-19 01:00:05,688 - ReasoningLoop - INFO - Processing: FILE_20260619_005818_live_demo_test.md
+2026-06-19 01:00:05,706 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005818_live_demo.md
+2026-06-19 01:00:05,732 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_task1.md
+2026-06-19 01:00:05,747 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005819_task1.md
+2026-06-19 01:00:05,775 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_test_bronze_demo.md
+2026-06-19 01:00:05,790 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005819_test_bron.md
+2026-06-19 01:00:05,814 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_test_bronze_tier.md
+2026-06-19 01:00:05,832 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005819_test_bron.md
+2026-06-19 01:00:05,869 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_test_bronze_tier_demo.md
+2026-06-19 01:00:05,887 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005819_test_bron.md
+2026-06-19 01:00:05,913 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_test_bronz_tier_done.md
+2026-06-19 01:00:05,929 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005819_test_bron.md
+2026-06-19 01:00:05,952 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_test_silver.md
+2026-06-19 01:00:05,969 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010005_FILE_20260619_005819_test_silv.md
+2026-06-19 01:00:05,993 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_test_watcher_fix.md
+2026-06-19 01:00:06,009 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010006_FILE_20260619_005819_test_watc.md
+2026-06-19 01:00:06,031 - ReasoningLoop - INFO - Processing: FILE_20260619_005819_urgent_client_request.md
+2026-06-19 01:00:06,045 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010006_FILE_20260619_005819_urgent_cl.md
+2026-06-19 01:00:06,072 - ReasoningLoop - INFO - Processing: FILE_20260619_005820_urgent_invoice_request.md
+2026-06-19 01:00:06,087 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010006_FILE_20260619_005820_urgent_in.md
+2026-06-19 01:00:06,098 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_010006_FILE_20260619_005820_urgent_in.md
+2026-06-19 01:00:06,119 - ReasoningLoop - INFO - Processing: FILE_20260619_005820_video_demo_1781800864.md
+2026-06-19 01:00:06,136 - ReasoningLoop - INFO - Created plan: PLAN_20260619_010006_FILE_20260619_005820_video_dem.md
+2026-06-19 01:00:06,168 - ReasoningLoop - INFO - Processed 50 item(s)
+[2026-06-19 01:00:06] Running approval orchestrator...
+[2026-06-19 01:00:08] AI Employee scheduled run complete
+---
+[2026-06-19 01:05:01] Starting AI Employee scheduled run
+[2026-06-19 01:05:01] Running reasoning loop...
+2026-06-19 01:05:02,814 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:05:02] Running approval orchestrator...
+[2026-06-19 01:05:04] AI Employee scheduled run complete
+---
+[2026-06-19 01:10:02] Starting AI Employee scheduled run
+[2026-06-19 01:10:02] Running reasoning loop...
+2026-06-19 01:10:03,642 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:10:03] Running approval orchestrator...
+[2026-06-19 01:10:04] AI Employee scheduled run complete
+---
+[2026-06-19 01:15:01] Starting AI Employee scheduled run
+[2026-06-19 01:15:01] Running reasoning loop...
+2026-06-19 01:15:03,014 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:15:03] Running approval orchestrator...
+[2026-06-19 01:15:04] AI Employee scheduled run complete
+---
+[2026-06-19 01:20:01] Starting AI Employee scheduled run
+[2026-06-19 01:20:01] Running reasoning loop...
+2026-06-19 01:20:04,057 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:20:04] Running approval orchestrator...
+[2026-06-19 01:20:05] AI Employee scheduled run complete
+---
+[2026-06-19 01:25:01] Starting AI Employee scheduled run
+[2026-06-19 01:25:01] Running reasoning loop...
+2026-06-19 01:25:02,619 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:25:02] Running approval orchestrator...
+[2026-06-19 01:25:03] AI Employee scheduled run complete
+---
+[2026-06-19 01:30:01] Starting AI Employee scheduled run
+[2026-06-19 01:30:01] Running reasoning loop...
+2026-06-19 01:30:02,607 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:30:02] Running approval orchestrator...
+[2026-06-19 01:30:03] AI Employee scheduled run complete
+---
+[2026-06-19 01:35:01] Starting AI Employee scheduled run
+[2026-06-19 01:35:01] Running reasoning loop...
+2026-06-19 01:35:02,504 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:35:02] Running approval orchestrator...
+[2026-06-19 01:35:03] AI Employee scheduled run complete
+---
+[2026-06-19 01:40:01] Starting AI Employee scheduled run
+[2026-06-19 01:40:01] Running reasoning loop...
+2026-06-19 01:40:02,120 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:40:02] Running approval orchestrator...
+[2026-06-19 01:40:03] AI Employee scheduled run complete
+---
+[2026-06-19 01:45:01] Starting AI Employee scheduled run
+[2026-06-19 01:45:01] Running reasoning loop...
+2026-06-19 01:45:01,937 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:45:01] Running approval orchestrator...
+[2026-06-19 01:45:02] AI Employee scheduled run complete
+---
+[2026-06-19 01:50:01] Starting AI Employee scheduled run
+[2026-06-19 01:50:01] Running reasoning loop...
+2026-06-19 01:50:02,777 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:50:02] Running approval orchestrator...
+[2026-06-19 01:50:03] AI Employee scheduled run complete
+---
+[2026-06-19 01:55:01] Starting AI Employee scheduled run
+[2026-06-19 01:55:01] Running reasoning loop...
+2026-06-19 01:55:02,979 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 01:55:03] Running approval orchestrator...
+[2026-06-19 01:55:03] AI Employee scheduled run complete
+---
+[2026-06-19 02:00:01] Starting AI Employee scheduled run
+[2026-06-19 02:00:01] Running reasoning loop...
+2026-06-19 02:00:02,536 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:00:02] Running approval orchestrator...
+[2026-06-19 02:00:03] AI Employee scheduled run complete
+---
+[2026-06-19 02:05:01] Starting AI Employee scheduled run
+[2026-06-19 02:05:01] Running reasoning loop...
+2026-06-19 02:05:01,964 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:05:01] Running approval orchestrator...
+[2026-06-19 02:05:02] AI Employee scheduled run complete
+---
+[2026-06-19 02:10:01] Starting AI Employee scheduled run
+[2026-06-19 02:10:01] Running reasoning loop...
+2026-06-19 02:10:02,391 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:10:02] Running approval orchestrator...
+[2026-06-19 02:10:03] AI Employee scheduled run complete
+---
+[2026-06-19 02:15:01] Starting AI Employee scheduled run
+[2026-06-19 02:15:01] Running reasoning loop...
+2026-06-19 02:15:02,114 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:15:02] Running approval orchestrator...
+[2026-06-19 02:15:05] AI Employee scheduled run complete
+---
+[2026-06-19 02:20:01] Starting AI Employee scheduled run
+[2026-06-19 02:20:01] Running reasoning loop...
+2026-06-19 02:20:01,754 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:20:01] Running approval orchestrator...
+[2026-06-19 02:20:02] AI Employee scheduled run complete
+---
+[2026-06-19 02:25:01] Starting AI Employee scheduled run
+[2026-06-19 02:25:01] Running reasoning loop...
+2026-06-19 02:25:02,880 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_01_test_bronze.md
+2026-06-19 02:25:02,900 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022502_FILE_20260619_022452_01_test_b.md
+2026-06-19 02:25:02,933 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_bronze_tier_test.md
+2026-06-19 02:25:02,952 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022502_FILE_20260619_022452_bronze_ti.md
+2026-06-19 02:25:02,988 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_business_invoice.md
+2026-06-19 02:25:03,022 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_business_.md
+2026-06-19 02:25:03,040 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022503_FILE_20260619_022452_business_.md
+2026-06-19 02:25:03,073 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_client_invoice_request.md
+2026-06-19 02:25:03,094 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_client_in.md
+2026-06-19 02:25:03,118 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022503_FILE_20260619_022452_client_in.md
+2026-06-19 02:25:03,148 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_client_invoice_request_demo.md
+2026-06-19 02:25:03,174 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_client_in.md
+2026-06-19 02:25:03,188 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022503_FILE_20260619_022452_client_in.md
+2026-06-19 02:25:03,236 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_client_whatsapp_invoice_reques.md
+2026-06-19 02:25:03,278 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_client_wh.md
+2026-06-19 02:25:03,305 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022503_FILE_20260619_022452_client_wh.md
+2026-06-19 02:25:03,362 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_demo_$(date_+%s).md
+2026-06-19 02:25:03,403 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_demo_$(da.md
+2026-06-19 02:25:03,446 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_DEMO_EMAIL_20260601_194651.md
+2026-06-19 02:25:03,493 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_DEMO_EMAI.md
+2026-06-19 02:25:03,516 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022503_FILE_20260619_022452_DEMO_EMAI.md
+2026-06-19 02:25:03,582 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_demo_task.md
+2026-06-19 02:25:03,626 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_demo_task.md
+2026-06-19 02:25:03,672 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_demo_test.md
+2026-06-19 02:25:03,694 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_demo_test.md
+2026-06-19 02:25:03,724 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_gold_demo.md
+2026-06-19 02:25:03,744 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_gold_demo.md
+2026-06-19 02:25:03,777 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_invoice_april_abc.md
+2026-06-19 02:25:03,794 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_invoice_a.md
+2026-06-19 02:25:03,809 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022503_FILE_20260619_022452_invoice_a.md
+2026-06-19 02:25:03,840 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_live_demo_1781799765.md
+2026-06-19 02:25:03,856 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_live_demo.md
+2026-06-19 02:25:03,884 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_live_demo_1781799800.md
+2026-06-19 02:25:03,903 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_live_demo.md
+2026-06-19 02:25:03,935 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_live_demo_test.md
+2026-06-19 02:25:03,950 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_live_demo.md
+2026-06-19 02:25:03,981 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_task1.md
+2026-06-19 02:25:04,001 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022503_FILE_20260619_022452_task1.md
+2026-06-19 02:25:04,024 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_test_bronze_demo.md
+2026-06-19 02:25:04,045 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_test_bron.md
+2026-06-19 02:25:04,085 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_test_bronze_tier.md
+2026-06-19 02:25:04,116 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_test_bron.md
+2026-06-19 02:25:04,159 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_test_bronze_tier_demo.md
+2026-06-19 02:25:04,184 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_test_bron.md
+2026-06-19 02:25:04,228 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_test_bronz_tier_done.md
+2026-06-19 02:25:04,254 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_test_bron.md
+2026-06-19 02:25:04,323 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_test_silver.md
+2026-06-19 02:25:04,369 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_test_silv.md
+2026-06-19 02:25:04,433 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_test_watcher_fix.md
+2026-06-19 02:25:04,478 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_test_watc.md
+2026-06-19 02:25:04,539 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_urgent_client_request.md
+2026-06-19 02:25:04,588 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_urgent_cl.md
+2026-06-19 02:25:04,644 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_urgent_invoice_request.md
+2026-06-19 02:25:04,685 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_urgent_in.md
+2026-06-19 02:25:04,708 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_022504_FILE_20260619_022452_urgent_in.md
+2026-06-19 02:25:04,758 - ReasoningLoop - INFO - Processing: FILE_20260619_022452_video_demo_1781800864.md
+2026-06-19 02:25:04,809 - ReasoningLoop - INFO - Created plan: PLAN_20260619_022504_FILE_20260619_022452_video_dem.md
+2026-06-19 02:25:04,870 - ReasoningLoop - INFO - Processed 25 item(s)
+[2026-06-19 02:25:04] Running approval orchestrator...
+[2026-06-19 02:25:06] AI Employee scheduled run complete
+---
+[2026-06-19 02:30:01] Starting AI Employee scheduled run
+[2026-06-19 02:30:01] Running reasoning loop...
+2026-06-19 02:30:03,011 - ReasoningLoop - INFO - Processing: FILE_20260619_022611_01_test_bronze.md
+2026-06-19 02:30:03,029 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022611_01_test_b.md
+2026-06-19 02:30:03,092 - ReasoningLoop - INFO - Processing: FILE_20260619_022611_bronze_tier_test.md
+2026-06-19 02:30:03,113 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022611_bronze_ti.md
+2026-06-19 02:30:03,153 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_business_invoice.md
+2026-06-19 02:30:03,172 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_business_.md
+2026-06-19 02:30:03,182 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023003_FILE_20260619_022612_business_.md
+2026-06-19 02:30:03,214 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_client_invoice_request.md
+2026-06-19 02:30:03,244 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_client_in.md
+2026-06-19 02:30:03,264 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023003_FILE_20260619_022612_client_in.md
+2026-06-19 02:30:03,311 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_client_invoice_request_demo.md
+2026-06-19 02:30:03,333 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_client_in.md
+2026-06-19 02:30:03,353 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023003_FILE_20260619_022612_client_in.md
+2026-06-19 02:30:03,393 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_client_whatsapp_invoice_reques.md
+2026-06-19 02:30:03,420 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_client_wh.md
+2026-06-19 02:30:03,434 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023003_FILE_20260619_022612_client_wh.md
+2026-06-19 02:30:03,496 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_demo_$(date_+%s).md
+2026-06-19 02:30:03,531 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_demo_$(da.md
+2026-06-19 02:30:03,597 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_DEMO_EMAIL_20260601_194651.md
+2026-06-19 02:30:03,652 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_DEMO_EMAI.md
+2026-06-19 02:30:03,724 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023003_FILE_20260619_022612_DEMO_EMAI.md
+2026-06-19 02:30:03,789 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_demo_task.md
+2026-06-19 02:30:03,843 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_demo_task.md
+2026-06-19 02:30:03,922 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_demo_test.md
+2026-06-19 02:30:03,952 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023003_FILE_20260619_022612_demo_test.md
+2026-06-19 02:30:04,059 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_gold_demo.md
+2026-06-19 02:30:04,077 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_gold_demo.md
+2026-06-19 02:30:04,111 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_invoice_april_abc.md
+2026-06-19 02:30:04,133 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_invoice_a.md
+2026-06-19 02:30:04,148 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023004_FILE_20260619_022612_invoice_a.md
+2026-06-19 02:30:04,216 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_live_demo_1781799765.md
+2026-06-19 02:30:04,243 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_live_demo.md
+2026-06-19 02:30:04,278 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_live_demo_1781799800.md
+2026-06-19 02:30:04,299 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_live_demo.md
+2026-06-19 02:30:04,344 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_live_demo_test.md
+2026-06-19 02:30:04,383 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_live_demo.md
+2026-06-19 02:30:04,440 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_task1.md
+2026-06-19 02:30:04,465 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_task1.md
+2026-06-19 02:30:04,509 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_test_bronze_demo.md
+2026-06-19 02:30:04,530 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_test_bron.md
+2026-06-19 02:30:04,598 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_test_bronze_tier.md
+2026-06-19 02:30:04,633 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_test_bron.md
+2026-06-19 02:30:04,695 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_test_bronze_tier_demo.md
+2026-06-19 02:30:04,740 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_test_bron.md
+2026-06-19 02:30:04,795 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_test_bronz_tier_done.md
+2026-06-19 02:30:04,833 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_test_bron.md
+2026-06-19 02:30:04,879 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_test_silver.md
+2026-06-19 02:30:04,911 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023004_FILE_20260619_022612_test_silv.md
+2026-06-19 02:30:04,998 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_test_watcher_fix.md
+2026-06-19 02:30:05,051 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022612_test_watc.md
+2026-06-19 02:30:05,081 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_urgent_client_request.md
+2026-06-19 02:30:05,099 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022612_urgent_cl.md
+2026-06-19 02:30:05,131 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_urgent_invoice_request.md
+2026-06-19 02:30:05,150 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022612_urgent_in.md
+2026-06-19 02:30:05,167 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023005_FILE_20260619_022612_urgent_in.md
+2026-06-19 02:30:05,201 - ReasoningLoop - INFO - Processing: FILE_20260619_022612_video_demo_1781800864.md
+2026-06-19 02:30:05,219 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022612_video_dem.md
+2026-06-19 02:30:05,248 - ReasoningLoop - INFO - Processing: FILE_20260619_022741_01_test_bronze.md
+2026-06-19 02:30:05,264 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022741_01_test_b.md
+2026-06-19 02:30:05,297 - ReasoningLoop - INFO - Processing: FILE_20260619_022741_bronze_tier_test.md
+2026-06-19 02:30:05,318 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022741_bronze_ti.md
+2026-06-19 02:30:05,355 - ReasoningLoop - INFO - Processing: FILE_20260619_022741_business_invoice.md
+2026-06-19 02:30:05,378 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022741_business_.md
+2026-06-19 02:30:05,388 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023005_FILE_20260619_022741_business_.md
+2026-06-19 02:30:05,418 - ReasoningLoop - INFO - Processing: FILE_20260619_022741_client_invoice_request.md
+2026-06-19 02:30:05,437 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022741_client_in.md
+2026-06-19 02:30:05,457 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023005_FILE_20260619_022741_client_in.md
+2026-06-19 02:30:05,496 - ReasoningLoop - INFO - Processing: FILE_20260619_022741_client_invoice_request_demo.md
+2026-06-19 02:30:05,516 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022741_client_in.md
+2026-06-19 02:30:05,525 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023005_FILE_20260619_022741_client_in.md
+2026-06-19 02:30:05,561 - ReasoningLoop - INFO - Processing: FILE_20260619_022741_client_whatsapp_invoice_reques.md
+2026-06-19 02:30:05,584 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022741_client_wh.md
+2026-06-19 02:30:05,599 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023005_FILE_20260619_022741_client_wh.md
+2026-06-19 02:30:05,649 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_demo_$(date_+%s).md
+2026-06-19 02:30:05,667 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022742_demo_$(da.md
+2026-06-19 02:30:05,713 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_demo_1781817979.md
+2026-06-19 02:30:05,741 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022742_demo_1781.md
+2026-06-19 02:30:05,771 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_DEMO_EMAIL_20260601_194651.md
+2026-06-19 02:30:05,795 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022742_DEMO_EMAI.md
+2026-06-19 02:30:05,812 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023005_FILE_20260619_022742_DEMO_EMAI.md
+2026-06-19 02:30:05,857 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_demo_task.md
+2026-06-19 02:30:05,881 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022742_demo_task.md
+2026-06-19 02:30:05,921 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_demo_test.md
+2026-06-19 02:30:05,943 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023005_FILE_20260619_022742_demo_test.md
+2026-06-19 02:30:06,007 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_gold_demo.md
+2026-06-19 02:30:06,045 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_gold_demo.md
+2026-06-19 02:30:06,111 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_invoice_april_abc.md
+2026-06-19 02:30:06,128 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_invoice_a.md
+2026-06-19 02:30:06,144 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023006_FILE_20260619_022742_invoice_a.md
+2026-06-19 02:30:06,180 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_live_demo_1781799765.md
+2026-06-19 02:30:06,199 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_live_demo.md
+2026-06-19 02:30:06,244 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_live_demo_1781799800.md
+2026-06-19 02:30:06,266 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_live_demo.md
+2026-06-19 02:30:06,310 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_live_demo_test.md
+2026-06-19 02:30:06,339 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_live_demo.md
+2026-06-19 02:30:06,376 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_task1.md
+2026-06-19 02:30:06,396 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_task1.md
+2026-06-19 02:30:06,464 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_test_bronze_demo.md
+2026-06-19 02:30:06,493 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_test_bron.md
+2026-06-19 02:30:06,549 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_test_bronze_tier.md
+2026-06-19 02:30:06,579 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_test_bron.md
+2026-06-19 02:30:06,628 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_test_bronze_tier_demo.md
+2026-06-19 02:30:06,660 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_test_bron.md
+2026-06-19 02:30:06,717 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_test_bronz_tier_done.md
+2026-06-19 02:30:06,747 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_test_bron.md
+2026-06-19 02:30:06,795 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_test_silver.md
+2026-06-19 02:30:06,812 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_test_silv.md
+2026-06-19 02:30:06,870 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_test_watcher_fix.md
+2026-06-19 02:30:06,899 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_test_watc.md
+2026-06-19 02:30:06,956 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_urgent_client_request.md
+2026-06-19 02:30:07,004 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023006_FILE_20260619_022742_urgent_cl.md
+2026-06-19 02:30:07,069 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_urgent_invoice_request.md
+2026-06-19 02:30:07,117 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022742_urgent_in.md
+2026-06-19 02:30:07,131 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023007_FILE_20260619_022742_urgent_in.md
+2026-06-19 02:30:07,176 - ReasoningLoop - INFO - Processing: FILE_20260619_022742_video_demo_1781800864.md
+2026-06-19 02:30:07,208 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022742_video_dem.md
+2026-06-19 02:30:07,265 - ReasoningLoop - INFO - Processing: FILE_20260619_022942_01_test_bronze.md
+2026-06-19 02:30:07,294 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022942_01_test_b.md
+2026-06-19 02:30:07,353 - ReasoningLoop - INFO - Processing: FILE_20260619_022942_bronze_tier_test.md
+2026-06-19 02:30:07,381 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022942_bronze_ti.md
+2026-06-19 02:30:07,448 - ReasoningLoop - INFO - Processing: FILE_20260619_022942_business_invoice.md
+2026-06-19 02:30:07,464 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022942_business_.md
+2026-06-19 02:30:07,482 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023007_FILE_20260619_022942_business_.md
+2026-06-19 02:30:07,523 - ReasoningLoop - INFO - Processing: FILE_20260619_022942_client_invoice_request.md
+2026-06-19 02:30:07,542 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022942_client_in.md
+2026-06-19 02:30:07,558 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023007_FILE_20260619_022942_client_in.md
+2026-06-19 02:30:07,591 - ReasoningLoop - INFO - Processing: FILE_20260619_022942_client_invoice_request_demo.md
+2026-06-19 02:30:07,612 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022942_client_in.md
+2026-06-19 02:30:07,622 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023007_FILE_20260619_022942_client_in.md
+2026-06-19 02:30:07,660 - ReasoningLoop - INFO - Processing: FILE_20260619_022942_client_whatsapp_invoice_reques.md
+2026-06-19 02:30:07,680 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022942_client_wh.md
+2026-06-19 02:30:07,694 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023007_FILE_20260619_022942_client_wh.md
+2026-06-19 02:30:07,730 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_demo_$(date_+%s).md
+2026-06-19 02:30:07,758 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022943_demo_$(da.md
+2026-06-19 02:30:07,792 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_demo_1781817979.md
+2026-06-19 02:30:07,813 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022943_demo_1781.md
+2026-06-19 02:30:07,861 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_DEMO_EMAIL_20260601_194651.md
+2026-06-19 02:30:07,883 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022943_DEMO_EMAI.md
+2026-06-19 02:30:07,899 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023007_FILE_20260619_022943_DEMO_EMAI.md
+2026-06-19 02:30:07,953 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_demo_task.md
+2026-06-19 02:30:07,986 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023007_FILE_20260619_022943_demo_task.md
+2026-06-19 02:30:08,036 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_demo_test.md
+2026-06-19 02:30:08,068 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_demo_test.md
+2026-06-19 02:30:08,117 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_gold_demo.md
+2026-06-19 02:30:08,140 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_gold_demo.md
+2026-06-19 02:30:08,196 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_invoice_april_abc.md
+2026-06-19 02:30:08,223 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_invoice_a.md
+2026-06-19 02:30:08,245 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023008_FILE_20260619_022943_invoice_a.md
+2026-06-19 02:30:08,293 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_live_demo_1781799765.md
+2026-06-19 02:30:08,325 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_live_demo.md
+2026-06-19 02:30:08,367 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_live_demo_1781799800.md
+2026-06-19 02:30:08,391 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_live_demo.md
+2026-06-19 02:30:08,431 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_live_demo_test.md
+2026-06-19 02:30:08,451 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_live_demo.md
+2026-06-19 02:30:08,493 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_task1.md
+2026-06-19 02:30:08,512 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_task1.md
+2026-06-19 02:30:08,556 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_1781818166.md
+2026-06-19 02:30:08,581 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_test_1781.md
+2026-06-19 02:30:08,628 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_bronze_demo.md
+2026-06-19 02:30:08,650 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_test_bron.md
+2026-06-19 02:30:08,698 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_bronze_tier.md
+2026-06-19 02:30:08,719 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_test_bron.md
+2026-06-19 02:30:08,780 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_bronze_tier_demo.md
+2026-06-19 02:30:08,815 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_test_bron.md
+2026-06-19 02:30:08,856 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_bronz_tier_done.md
+2026-06-19 02:30:08,879 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_test_bron.md
+2026-06-19 02:30:08,914 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_silver.md
+2026-06-19 02:30:08,946 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023008_FILE_20260619_022943_test_silv.md
+2026-06-19 02:30:08,997 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_test_watcher_fix.md
+2026-06-19 02:30:09,022 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023009_FILE_20260619_022943_test_watc.md
+2026-06-19 02:30:09,069 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_urgent_client_request.md
+2026-06-19 02:30:09,090 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023009_FILE_20260619_022943_urgent_cl.md
+2026-06-19 02:30:09,134 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_urgent_invoice_request.md
+2026-06-19 02:30:09,155 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023009_FILE_20260619_022943_urgent_in.md
+2026-06-19 02:30:09,168 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_023009_FILE_20260619_022943_urgent_in.md
+2026-06-19 02:30:09,212 - ReasoningLoop - INFO - Processing: FILE_20260619_022943_video_demo_1781800864.md
+2026-06-19 02:30:09,234 - ReasoningLoop - INFO - Created plan: PLAN_20260619_023009_FILE_20260619_022943_video_dem.md
+2026-06-19 02:30:09,290 - ReasoningLoop - INFO - Processed 78 item(s)
+[2026-06-19 02:30:09] Running approval orchestrator...
+[2026-06-19 02:30:11] AI Employee scheduled run complete
+---
+[2026-06-19 02:35:01] Starting AI Employee scheduled run
+[2026-06-19 02:35:01] Running reasoning loop...
+2026-06-19 02:35:02,112 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:35:02] Running approval orchestrator...
+[2026-06-19 02:35:02] AI Employee scheduled run complete
+---
+[2026-06-19 02:40:01] Starting AI Employee scheduled run
+[2026-06-19 02:40:01] Running reasoning loop...
+2026-06-19 02:40:02,882 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:40:02] Running approval orchestrator...
+[2026-06-19 02:40:04] AI Employee scheduled run complete
+---
+[2026-06-19 02:45:01] Starting AI Employee scheduled run
+[2026-06-19 02:45:01] Running reasoning loop...
+2026-06-19 02:45:01,780 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:45:01] Running approval orchestrator...
+[2026-06-19 02:45:02] AI Employee scheduled run complete
+---
+[2026-06-19 02:50:01] Starting AI Employee scheduled run
+[2026-06-19 02:50:01] Running reasoning loop...
+2026-06-19 02:50:02,662 - ReasoningLoop - INFO - Processing: FILE_20260619_024622_ahmed_khan_1781819174.md
+2026-06-19 02:50:02,677 - ReasoningLoop - INFO - Created plan: PLAN_20260619_025002_FILE_20260619_024622_ahmed_kha.md
+2026-06-19 02:50:02,713 - ReasoningLoop - INFO - Processed 1 item(s)
+[2026-06-19 02:50:02] Running approval orchestrator...
+[2026-06-19 02:50:04] AI Employee scheduled run complete
+---
+[2026-06-19 02:55:01] Starting AI Employee scheduled run
+[2026-06-19 02:55:01] Running reasoning loop...
+2026-06-19 02:55:02,684 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 02:55:02] Running approval orchestrator...
+[2026-06-19 02:55:03] AI Employee scheduled run complete
+---
+[2026-06-19 03:00:01] Starting AI Employee scheduled run
+[2026-06-19 03:00:01] Running reasoning loop...
+2026-06-19 03:00:01,618 - ReasoningLoop - INFO - Processing: FILE_20260619_025722_ahmed_khan_invoice_request.md
+2026-06-19 03:00:01,625 - ReasoningLoop - INFO - Created plan: PLAN_20260619_030001_FILE_20260619_025722_ahmed_kha.md
+2026-06-19 03:00:01,629 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_030001_FILE_20260619_025722_ahmed_kha.md
+2026-06-19 03:00:01,649 - ReasoningLoop - INFO - Processed 1 item(s)
+[2026-06-19 03:00:01] Running approval orchestrator...
+[2026-06-19 03:00:02] AI Employee scheduled run complete
+---
+[2026-06-19 03:05:01] Starting AI Employee scheduled run
+[2026-06-19 03:05:01] Running reasoning loop...
+2026-06-19 03:05:02,224 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:05:02] Running approval orchestrator...
+[2026-06-19 03:05:03] AI Employee scheduled run complete
+---
+[2026-06-19 03:10:01] Starting AI Employee scheduled run
+[2026-06-19 03:10:01] Running reasoning loop...
+2026-06-19 03:10:03,764 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:10:03] Running approval orchestrator...
+[2026-06-19 03:10:05] AI Employee scheduled run complete
+---
+[2026-06-19 03:15:02] Starting AI Employee scheduled run
+[2026-06-19 03:15:02] Running reasoning loop...
+2026-06-19 03:15:04,086 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:15:04] Running approval orchestrator...
+[2026-06-19 03:15:06] AI Employee scheduled run complete
+---
+[2026-06-19 03:20:01] Starting AI Employee scheduled run
+[2026-06-19 03:20:01] Running reasoning loop...
+2026-06-19 03:20:02,819 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:20:02] Running approval orchestrator...
+[2026-06-19 03:20:03] AI Employee scheduled run complete
+---
+[2026-06-19 03:25:01] Starting AI Employee scheduled run
+[2026-06-19 03:25:02] Running reasoning loop...
+2026-06-19 03:25:03,217 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:25:03] Running approval orchestrator...
+[2026-06-19 03:25:04] AI Employee scheduled run complete
+---
+[2026-06-19 03:30:01] Starting AI Employee scheduled run
+[2026-06-19 03:30:01] Running reasoning loop...
+2026-06-19 03:30:02,680 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:30:02] Running approval orchestrator...
+[2026-06-19 03:30:03] AI Employee scheduled run complete
+---
+[2026-06-19 03:35:01] Starting AI Employee scheduled run
+[2026-06-19 03:35:01] Running reasoning loop...
+2026-06-19 03:35:03,479 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:35:03] Running approval orchestrator...
+[2026-06-19 03:35:04] AI Employee scheduled run complete
+---
+[2026-06-19 03:40:01] Starting AI Employee scheduled run
+[2026-06-19 03:40:01] Running reasoning loop...
+2026-06-19 03:40:02,797 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:40:02] Running approval orchestrator...
+[2026-06-19 03:40:04] AI Employee scheduled run complete
+---
+[2026-06-19 03:45:01] Starting AI Employee scheduled run
+[2026-06-19 03:45:01] Running reasoning loop...
+2026-06-19 03:45:02,523 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:45:02] Running approval orchestrator...
+[2026-06-19 03:45:03] AI Employee scheduled run complete
+---
+[2026-06-19 03:50:01] Starting AI Employee scheduled run
+[2026-06-19 03:50:02] Running reasoning loop...
+2026-06-19 03:50:08,068 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:50:08] Running approval orchestrator...
+[2026-06-19 03:50:11] AI Employee scheduled run complete
+---
+[2026-06-19 03:55:01] Starting AI Employee scheduled run
+[2026-06-19 03:55:01] Running reasoning loop...
+2026-06-19 03:55:05,528 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 03:55:05] Running approval orchestrator...
+[2026-06-19 03:55:09] AI Employee scheduled run complete
+---
+[2026-06-19 04:00:01] Starting AI Employee scheduled run
+[2026-06-19 04:00:01] Running reasoning loop...
+2026-06-19 04:00:03,835 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:00:03] Running approval orchestrator...
+[2026-06-19 04:00:05] AI Employee scheduled run complete
+---
+[2026-06-19 04:05:01] Starting AI Employee scheduled run
+[2026-06-19 04:05:01] Running reasoning loop...
+2026-06-19 04:05:03,014 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:05:03] Running approval orchestrator...
+[2026-06-19 04:05:04] AI Employee scheduled run complete
+---
+[2026-06-19 04:10:01] Starting AI Employee scheduled run
+[2026-06-19 04:10:01] Running reasoning loop...
+2026-06-19 04:10:04,011 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:10:04] Running approval orchestrator...
+[2026-06-19 04:10:06] AI Employee scheduled run complete
+---
+[2026-06-19 04:15:01] Starting AI Employee scheduled run
+[2026-06-19 04:15:01] Running reasoning loop...
+2026-06-19 04:15:06,197 - ReasoningLoop - INFO - Processing: FILE_20260619_041342_ahmed_khan_invoice_request.md
+2026-06-19 04:15:06,224 - ReasoningLoop - INFO - Created plan: PLAN_20260619_041506_FILE_20260619_041342_ahmed_kha.md
+2026-06-19 04:15:06,250 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_041506_FILE_20260619_041342_ahmed_kha.md
+2026-06-19 04:15:06,363 - ReasoningLoop - INFO - Processed 1 item(s)
+[2026-06-19 04:15:06] Running approval orchestrator...
+[2026-06-19 04:15:09] AI Employee scheduled run complete
+---
+[2026-06-19 04:20:02] Starting AI Employee scheduled run
+[2026-06-19 04:20:02] Running reasoning loop...
+2026-06-19 04:20:03,860 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:20:03] Running approval orchestrator...
+[2026-06-19 04:20:06] AI Employee scheduled run complete
+---
+[2026-06-19 04:25:02] Starting AI Employee scheduled run
+[2026-06-19 04:25:02] Running reasoning loop...
+2026-06-19 04:25:06,261 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:25:06] Running approval orchestrator...
+[2026-06-19 04:25:10] AI Employee scheduled run complete
+---
+[2026-06-19 04:30:01] Starting AI Employee scheduled run
+[2026-06-19 04:30:01] Running reasoning loop...
+2026-06-19 04:30:04,482 - ReasoningLoop - INFO - Processing: FILE_20260619_042613_ahmed_khan_invoice_request.md
+2026-06-19 04:30:04,544 - ReasoningLoop - INFO - Created plan: PLAN_20260619_043004_FILE_20260619_042613_ahmed_kha.md
+2026-06-19 04:30:04,577 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_043004_FILE_20260619_042613_ahmed_kha.md
+2026-06-19 04:30:04,717 - ReasoningLoop - INFO - Processing: FILE_20260619_042747_ahmed_khan_invoice_request.md
+2026-06-19 04:30:04,774 - ReasoningLoop - INFO - Created plan: PLAN_20260619_043004_FILE_20260619_042747_ahmed_kha.md
+2026-06-19 04:30:04,829 - ReasoningLoop - INFO - Created approval request: APPROVAL_20260619_043004_FILE_20260619_042747_ahmed_kha.md
+2026-06-19 04:30:05,504 - ReasoningLoop - INFO - Processed 2 item(s)
+[2026-06-19 04:30:05] Running approval orchestrator...
+[2026-06-19 04:30:10] AI Employee scheduled run complete
+---
+[2026-06-19 04:35:02] Starting AI Employee scheduled run
+[2026-06-19 04:35:02] Running reasoning loop...
+2026-06-19 04:35:03,732 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:35:03] Running approval orchestrator...
+[2026-06-19 04:35:06] AI Employee scheduled run complete
+---
+[2026-06-19 04:40:01] Starting AI Employee scheduled run
+[2026-06-19 04:40:01] Running reasoning loop...
+2026-06-19 04:40:03,688 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:40:03] Running approval orchestrator...
+[2026-06-19 04:40:05] AI Employee scheduled run complete
+---
+[2026-06-19 04:45:01] Starting AI Employee scheduled run
+[2026-06-19 04:45:01] Running reasoning loop...
+2026-06-19 04:45:09,194 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:45:09] Running approval orchestrator...
+[2026-06-19 04:45:14] AI Employee scheduled run complete
+---
+[2026-06-19 04:50:02] Starting AI Employee scheduled run
+[2026-06-19 04:50:02] Running reasoning loop...
+2026-06-19 04:50:05,543 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:50:05] Running approval orchestrator...
+[2026-06-19 04:50:08] AI Employee scheduled run complete
+---
+[2026-06-19 04:55:01] Starting AI Employee scheduled run
+[2026-06-19 04:55:01] Running reasoning loop...
+2026-06-19 04:55:02,707 - ReasoningLoop - INFO - No new items to process
+[2026-06-19 04:55:02] Running approval orchestrator...
+[2026-06-19 04:55:03] AI Employee scheduled run complete
+---

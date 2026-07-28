@@ -99,8 +99,12 @@ class InvoiceRequest(BaseModel):
     lines: List[Dict[str, Any]]
 
 class ApprovalAction(BaseModel):
-    filename: str
+    filename: str = None
+    file: str = None  # Alias for filename (frontend compatibility)
     action: str  # "approve" or "reject"
+
+    def get_filename(self) -> str:
+        return self.filename or self.file
 
 class FileContent(BaseModel):
     path: str
@@ -134,10 +138,13 @@ def get_vault_files(folder: str) -> List[Dict]:
 
 def read_vault_file(filepath: str) -> str:
     """Read a file from the vault"""
+    # Handle both absolute and relative paths
     path = Path(filepath)
+    if not path.is_absolute():
+        path = VAULT_PATH / filepath
     if not path.exists():
         raise FileNotFoundError(f"File not found: {filepath}")
-    if not str(path).startswith(str(VAULT_PATH)):
+    if not str(path.resolve()).startswith(str(VAULT_PATH.resolve())):
         raise PermissionError("Access denied: outside vault")
     return path.read_text()
 
@@ -158,6 +165,43 @@ def run_python_script(script_name: str, args: List[str] = None, timeout: int = 6
             capture_output=True,
             text=True,
             timeout=timeout
+        )
+        return {
+            "success": result.returncode == 0,
+            "stdout": result.stdout[-2000:] if result.stdout else "",
+            "stderr": result.stderr[-1000:] if result.stderr else "",
+            "returncode": result.returncode
+        }
+    except subprocess.TimeoutExpired:
+        return {"success": False, "error": "Script timed out"}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+def run_windows_python_script(script_name: str, args: List[str] = None, timeout: int = 180) -> Dict:
+    """Run a Python script via Windows Python in a completely separate process"""
+    script_path = WATCHERS_PATH / script_name
+    if not script_path.exists():
+        return {"success": False, "error": f"Script not found: {script_name}"}
+
+    # Convert WSL path to Windows path
+    windows_script_path = str(script_path).replace("/mnt/e/", "E:/")
+    windows_cwd = str(PROJECT_ROOT / "ai_employee_watchers").replace("/mnt/e/", "E:/")
+
+    # Build PowerShell command
+    args_str = " ".join(args) if args else ""
+    ps_cmd = f"cd '{windows_cwd}'; python '{windows_script_path}' {args_str}"
+
+    cmd = ["powershell.exe", "-c", ps_cmd]
+
+    try:
+        # Run in completely separate process - don't inherit handles
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            start_new_session=True,  # Fully isolate from parent process
+            env={**os.environ, "PYTHONUNBUFFERED": "1"}  # Ensure output is flushed
         )
         return {
             "success": result.returncode == 0,
@@ -251,12 +295,6 @@ async def get_vault_folders():
             }
     return folders
 
-@app.get("/api/vault/{folder}")
-async def get_vault_folder_contents(folder: str):
-    """Get contents of a vault folder"""
-    files = get_vault_files(folder)
-    return {"folder": folder, "files": files, "count": len(files)}
-
 @app.get("/api/vault/file")
 async def get_vault_file_content(path: str):
     """Read a specific vault file"""
@@ -278,6 +316,12 @@ async def write_vault_file(file: FileContent):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(file.content)
     return {"success": True, "path": str(path)}
+
+@app.get("/api/vault/{folder}")
+async def get_vault_folder_contents(folder: str):
+    """Get contents of a vault folder"""
+    files = get_vault_files(folder)
+    return {"folder": folder, "files": files, "count": len(files)}
 
 @app.get("/api/skills")
 async def get_agent_skills():
@@ -422,21 +466,25 @@ async def get_pending_approvals():
 @app.post("/api/approval/action")
 async def process_approval(action: ApprovalAction):
     """Approve or reject an action"""
-    source = VAULT_PATH / "Pending_Approval" / action.filename
+    filename = action.get_filename()
+    if not filename:
+        raise HTTPException(status_code=400, detail="filename or file required")
+
+    source = VAULT_PATH / "Pending_Approval" / filename
     if not source.exists():
         raise HTTPException(status_code=404, detail="File not found")
 
     if action.action == "approve":
-        dest = VAULT_PATH / "Approved" / action.filename
+        dest = VAULT_PATH / "Approved" / filename
     elif action.action == "reject":
-        dest = VAULT_PATH / "Rejected" / action.filename
+        dest = VAULT_PATH / "Rejected" / filename
     else:
         raise HTTPException(status_code=400, detail="Invalid action")
 
     dest.parent.mkdir(parents=True, exist_ok=True)
     source.rename(dest)
 
-    return {"success": True, "action": action.action, "file": action.filename}
+    return {"success": True, "action": action.action, "file": filename}
 
 @app.post("/api/approval/orchestrator")
 async def run_approval_orchestrator():
@@ -678,7 +726,8 @@ async def create_social_post(post: PostRequest):
     if post.platform == "linkedin_business":
         args = ["--test"] if post.test_mode else []
 
-    result = run_python_script(script_map[post.platform], args, timeout=180)
+    # Use Windows Python for Playwright scripts (WSL Playwright hangs)
+    result = run_windows_python_script(script_map[post.platform], args, timeout=180)
     return result
 
 @app.get("/api/social/posts")
@@ -792,9 +841,9 @@ class ScriptRequest(BaseModel):
 
 @app.post("/api/run/gmail-watcher")
 async def run_gmail_watcher():
-    """Run Gmail watcher for 5 checks"""
+    """Run Gmail watcher once (quick check)"""
     add_activity("watcher", "Gmail watcher started", "running")
-    result = run_python_script("gmail_watcher.py", ["--checks", "5"], timeout=180)
+    result = run_python_script("gmail_watcher.py", ["--once"], timeout=60)
     status = "success" if result.get("success") else "error"
     add_activity("watcher", "Gmail watcher finished", status, result.get("stdout", "")[:100])
     return result
@@ -818,43 +867,95 @@ async def run_linkedin_watcher():
     return result
 
 @app.post("/api/run/twitter-post")
-async def run_twitter_post(request: ScriptRequest):
-    """Run Twitter poster"""
+async def run_twitter_post(request: ScriptRequest = None):
+    """Run Twitter poster - ALWAYS posts for real (like LinkedIn business post)"""
     add_activity("action", "Twitter post started", "running")
-    args = []
-    if request.message:
-        args.extend(["--message", request.message])
-    elif request.test_mode:
-        args.append("--test")
-    result = run_python_script("twitter_poster.py", args, timeout=180)
-    status = "success" if result.get("success") else "error"
+
+    # Default message if none provided (like LinkedIn business post)
+    from datetime import datetime
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
+    default_message = f"GoalGetters AI Employee posting automatically! Built with Claude Code + Playwright. Posted: {timestamp} #AIEmployee #ClaudeCode #Automation"
+
+    message = default_message
+    if request and request.message:
+        message = request.message
+
+    # Build script path
+    script_path = WATCHERS_PATH / "twitter_poster.py"
+    windows_script_path = str(script_path).replace("/mnt/e/", "E:/")
+    windows_cwd = str(PROJECT_ROOT / "ai_employee_watchers").replace("/mnt/e/", "E:/")
+
+    # ALWAYS run for real - NEVER use test mode (like LinkedIn business post)
+    # Properly escape message for PowerShell
+    escaped_message = message.replace('"', '`"').replace("'", "''")
+    ps_cmd = f"cd '{windows_cwd}'; python '{windows_script_path}' --message \"{escaped_message}\""
+
+    try:
+        result = subprocess.run(
+            ["powershell.exe", "-c", ps_cmd],
+            capture_output=True,
+            text=True,
+            timeout=360,
+            start_new_session=True,
+            env={**os.environ, "PYTHONUNBUFFERED": "1"}
+        )
+        result_dict = {
+            "success": result.returncode == 0,
+            "stdout": result.stdout[-2000:] if result.stdout else "",
+            "stderr": result.stderr[-1000:] if result.stderr else "",
+            "returncode": result.returncode
+        }
+    except subprocess.TimeoutExpired:
+        result_dict = {"success": False, "error": "Script timed out"}
+    except Exception as e:
+        result_dict = {"success": False, "error": str(e)}
+
+    status = "success" if result_dict.get("success") else "error"
     add_activity("action", "Twitter post finished", status)
-    return result
+    return result_dict
 
 @app.post("/api/run/facebook-post")
-async def run_facebook_post(request: ScriptRequest):
-    """Run Facebook poster"""
+async def run_facebook_post(request: ScriptRequest = None):
+    """Run Facebook poster - ALWAYS posts for real (like LinkedIn business post)"""
     add_activity("action", "Facebook post started", "running")
-    args = []
-    if request.message:
-        args.extend(["--message", request.message])
-    elif request.test_mode:
-        args.append("--test")
-    result = run_python_script("facebook_poster.py", args, timeout=180)
+
+    # Default message if none provided
+    from datetime import datetime
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
+    default_message = f"GoalGetters AI Employee posting automatically! Built with Claude Code + Playwright. Posted: {timestamp} #AIEmployee #ClaudeCode #Automation"
+
+    message = default_message
+    if request and request.message:
+        message = request.message
+
+    # ALWAYS run for real - NEVER use test mode
+    args = ["--message", message]
+
+    # Use Windows Python for Playwright scripts (WSL Playwright hangs)
+    result = run_windows_python_script("facebook_poster.py", args, timeout=240)
     status = "success" if result.get("success") else "error"
     add_activity("action", "Facebook post finished", status)
     return result
 
 @app.post("/api/run/instagram-post")
-async def run_instagram_post(request: ScriptRequest):
-    """Run Instagram poster"""
+async def run_instagram_post(request: ScriptRequest = None):
+    """Run Instagram poster - ALWAYS posts for real (like LinkedIn business post)"""
     add_activity("action", "Instagram post started", "running")
-    args = []
-    if request.message:
-        args.extend(["--message", request.message])
-    elif request.test_mode:
-        args.append("--test")
-    result = run_python_script("instagram_poster.py", args, timeout=180)
+
+    # Default message if none provided
+    from datetime import datetime
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
+    default_message = f"GoalGetters AI Employee posting automatically! Built with Claude Code + Playwright. Posted: {timestamp} #AIEmployee #ClaudeCode #Automation"
+
+    message = default_message
+    if request and request.message:
+        message = request.message
+
+    # ALWAYS run for real - NEVER use test mode
+    args = ["--message", message]
+
+    # Use Windows Python for Playwright scripts (WSL Playwright hangs)
+    result = run_windows_python_script("instagram_poster.py", args, timeout=240)
     status = "success" if result.get("success") else "error"
     add_activity("action", "Instagram post finished", status)
     return result
@@ -868,17 +969,20 @@ async def run_linkedin_post(request: ScriptRequest):
         args.extend(["--message", request.message])
     elif request.test_mode:
         args.append("--test")
-    result = run_python_script("linkedin_poster.py", args, timeout=180)
+    # Use Windows Python for Playwright scripts (WSL Playwright hangs)
+    result = run_windows_python_script("linkedin_poster.py", args, timeout=180)
     status = "success" if result.get("success") else "error"
     add_activity("action", "LinkedIn post finished", status)
     return result
 
 @app.post("/api/run/linkedin-business-post")
-async def run_linkedin_business_post(request: ScriptRequest):
-    """Run LinkedIn business (GoalGetters) poster"""
+async def run_linkedin_business_post():
+    """Run LinkedIn business (GoalGetters) poster - posts to GoalGetters company page"""
     add_activity("action", "LinkedIn Business post started", "running")
-    args = ["--test"] if request.test_mode else []
-    result = run_python_script("linkedin_business_post.py", args, timeout=180)
+    # Use Windows Python for Playwright scripts (WSL Playwright hangs)
+    # Pass --quick flag to reduce timeouts for API calls
+    # Increased timeout to 240s to handle slow LinkedIn page loads
+    result = run_windows_python_script("linkedin_business_post.py", ["--quick"], timeout=240)
     status = "success" if result.get("success") else "error"
     add_activity("action", "LinkedIn Business post finished", status)
     return result

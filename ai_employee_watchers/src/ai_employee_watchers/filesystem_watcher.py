@@ -3,6 +3,7 @@ import logging
 import sys
 import time
 import shutil
+import argparse
 from pathlib import Path
 from datetime import datetime
 from watchdog.observers.polling import PollingObserver
@@ -87,15 +88,43 @@ A new file has been added to the Inbox folder and requires processing.
         logger.info(f'Created action file: {meta_path.name}')
 
 
+def run_once(vault_path: Path):
+    """Single check mode - process existing files in Inbox and exit"""
+    start_time = time.time()
+    inbox_path = vault_path / 'Inbox'
+
+    logger.info('Running Filesystem Watcher (once mode)...')
+    logger.info(f'Checking: {inbox_path}')
+
+    handler = DropFolderHandler(str(vault_path))
+    processed = 0
+
+    # Process all existing files in Inbox
+    for file_path in inbox_path.iterdir():
+        if file_path.is_file() and not file_path.name.startswith('.') and not file_path.name.startswith('~'):
+            logger.info(f'Processing: {file_path.name}')
+            handler.create_metadata(file_path)
+            processed += 1
+
+    elapsed = time.time() - start_time
+    if processed > 0:
+        logger.info(f'Processed {processed} file(s) in {elapsed:.2f} seconds')
+    else:
+        logger.info(f'No new files to process (completed in {elapsed:.2f} seconds)')
+
+    return processed
+
+
 def main():
     """Main entry point for the file system watcher"""
-    # Default vault path - can be overridden via command line
-    default_vault = Path(__file__).parent.parent.parent.parent / 'AI_Employee_Vault'
+    parser = argparse.ArgumentParser(description='Filesystem Watcher - Monitor Inbox for new files')
+    parser.add_argument('--once', action='store_true', help='Check once and exit immediately')
+    parser.add_argument('--vault', type=str, help='Path to AI Employee Vault')
+    args = parser.parse_args()
 
-    if len(sys.argv) > 1:
-        vault_path = Path(sys.argv[1])
-    else:
-        vault_path = default_vault
+    # Default vault path
+    default_vault = Path(__file__).parent.parent.parent.parent / 'AI_Employee_Vault'
+    vault_path = Path(args.vault) if args.vault else default_vault
 
     inbox_path = vault_path / 'Inbox'
 
@@ -103,6 +132,12 @@ def main():
         logger.error(f'Inbox folder not found: {inbox_path}')
         sys.exit(1)
 
+    if args.once:
+        # Single check mode - fast execution for demos
+        processed = run_once(vault_path)
+        sys.exit(0)
+
+    # Continuous monitoring mode
     logger.info(f'Starting File System Watcher')
     logger.info(f'Vault path: {vault_path}')
     logger.info(f'Watching: {inbox_path}')
