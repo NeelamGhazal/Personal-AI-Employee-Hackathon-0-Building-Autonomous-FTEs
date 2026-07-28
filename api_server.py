@@ -38,7 +38,7 @@ SKILLS_PATH = PROJECT_ROOT / ".claude" / "skills"
 ODOO_URL = "http://localhost:8069"
 ODOO_DB = "ai_employee"
 ODOO_USER = "admin"
-ODOO_PASSWORD = "admin123"
+ODOO_PASSWORD = os.environ.get("ODOO_PASSWORD", "change_me_in_production")
 
 # Process tracking
 RUNNING_PROCESSES: Dict[str, subprocess.Popen] = {}

@@ -148,7 +148,7 @@ Credentials:      /mnt/e/Full-Time-Equivalent-Hackathon-0/Full-Time-Equivalent-0
 URL:      http://localhost:8069
 Database: ai_employee
 Login:    admin
-Password: admin123
+Password: [SET VIA ODOO_PASSWORD ENV VAR]
 ```
 
 ### Social Media Sessions (Playwright Persistent Contexts)
